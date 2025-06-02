@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 // import { FaDatabase, FaCode } from "react-icons/fa";
 import SocialBar from "@components/custom/SocialBar/SocialBar";
 import {
-  MdAppSettingsAlt, MdWeb, MdStorage, MdApi, MdOutlineAnimation,
+  MdAppSettingsAlt, MdWeb, MdApi, MdOutlineAnimation,
 } from "react-icons/md";
 import {
-  FaCode, FaDatabase, FaRobot, FaServer, FaTools, FaCogs, FaRegKeyboard,
+  FaDatabase, FaRobot, FaServer, FaTools, FaCogs,
 } from "react-icons/fa";
 import {
   SiWordpress, SiDatabricks, SiServerfault, SiSupabase, SiOpenai, SiDocker, SiGooglecloud,

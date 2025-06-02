@@ -1,7 +1,7 @@
 import { Box, Grid2 as Grid, ListItemText, Typography, Chip, Button, Avatar, Stack, Tooltip } from "@mui/material";
 import {
-    SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiGraphql,
-    SiDocker, SiPostgresql, SiOpenai, SiRedux, SiZod, SiBun, SiGithub, SiSupabase,
+    SiJavascript, SiTypescript, SiReact, SiNodedotjs,
+    SiDocker, SiPostgresql, SiOpenai, SiZod, SiBun, SiSupabase,
 } from "react-icons/si";
 import SlideIn from "@theme/animations/SlideIn";
 import SocialBar from "@components/custom/SocialBar/SocialBar";

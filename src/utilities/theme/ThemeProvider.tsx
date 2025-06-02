@@ -20,6 +20,7 @@ const useTheme = ({ mode }: { mode: string }) => useMemo(() => createTheme({
 
 export const ThemeProvider = ({ children }: { children: any }) => {
   const { colorMode } = useUtilityStore();
+  console.log(colorMode);
   const theme = useTheme({ mode: "dark" }); //|| colorMode });
 
   return (

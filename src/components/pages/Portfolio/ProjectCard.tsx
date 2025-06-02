@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useRef } from "react";
-import { Alert, Chip, IconButton, ListItem, ListItemButton, ListItemIcon, Tooltip } from "@mui/material";
-import { Box, Card, CardContent, Typography, Button, Stack } from '@mui/material';
+import { Chip, IconButton, Tooltip } from "@mui/material";
+import { Box, Card, CardContent, Typography, Stack } from '@mui/material';
 import { motion, AnimatePresence } from "framer-motion";
 // @ts-ignore
 import { useSwipeable } from "react-swipeable";

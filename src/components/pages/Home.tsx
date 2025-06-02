@@ -97,8 +97,8 @@ const Home = () => {
                                             description={project.description}
                                             imageUrl={project.thumb || "https://picsum.photos/400"}
                                             tech={project.tech || ["React", "Supabase", "Zustand", "Framer Motion"]}
-                                            link={project.live}
-                                            github={project.github}
+                                            link={project.live as string}
+                                            github={project.github as string}
                                         />
                                     </Grid>
                                 ))}
