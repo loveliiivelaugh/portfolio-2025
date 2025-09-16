@@ -9,8 +9,9 @@ import SlideIn from "@theme/animations/SlideIn";
 import SocialBar from "@components/custom/SocialBar/SocialBar";
 import headshotCropped from "@assets/headshot-cropped.png";
 import { motion } from "framer-motion";
+import { Button } from "@mui/material";
 
-// // const MotionButton = motion(Button as any);
+const MotionButton = motion(Button as any);
 
 // const techIcons = [
 //     { logo: <SiJavascript />, name: "JavaScript" },
@@ -280,16 +281,49 @@ export default function HeroSection() {
                     </Typography>
 
                     <Stack direction="row" spacing={2} mt={2}>
-                        {/* <MotionButton
+                        <MotionButton
                             variant="outlined"
                             size="large"
+                            color="inherit"
                             whileHover={{ scale: 1.1 }}
+                            sx={{
+                                borderRadius: "24px",
+                                border: "1px solid rgba(255,255,255,0.08)",
+                                boxShadow: "0 10px 30px rgba(0,0,0,.35)",
+                                "&:hover": {
+                                    bgcolor: "rgba(255,255,255,0.02)",
+                                    transform: "translateY(-2px)",
+                                    boxShadow: "0 12px 40px rgba(0,0,0,.45)"
+                                }
+                            }}
                             component="a"
                             target="_blank"
-                            href="https://docs.google.com/document/d/1XRXuKHKSs5A1Kh2XkxHu-qxJpbrd527_ug9ycvp7u2o/edit?usp=sharing"
+                            href="https://woodwardstudio.dev/consulting"
                         >
-                            View Resume
-                        </MotionButton> */}
+                            Work with me
+                        </MotionButton>
+                        <MotionButton
+                            variant="outlined"
+                            size="large"
+                            color="inherit"
+                            whileHover={{ scale: 1.1 }}
+                            sx={{
+                                borderRadius: "24px",
+                                border: "1px solid rgba(255,255,255,0.08)",
+                                boxShadow: "0 10px 30px rgba(0,0,0,.35)",
+                                "&:hover": {
+                                    bgcolor: "rgba(255,255,255,0.02)",
+                                    transform: "translateY(-2px)",
+                                    boxShadow: "0 12px 40px rgba(0,0,0,.45)"
+                                }
+                            }}
+                            component="a"
+                            target="_blank"
+                            href="https://woodwardstudio.dev"
+                        >
+                            Read my blog
+                        </MotionButton>
+                        
                         {/* <SocialBar /> */}
                     </Stack>
                 </SlideIn>

@@ -15,6 +15,8 @@ import {
   SiGraphql, SiTypescript, SiNextdotjs, SiNotion, SiGithub, SiSlack,
 } from "react-icons/si";
 
+const MotionButton = motion(Button as any);
+
 const services = [
   // 🔧 Core Development
   { label: "Application Development", icon: <MdAppSettingsAlt /> },
@@ -112,8 +114,9 @@ export default function ServicesSection() {
             <Button
               fullWidth
               variant="outlined"
-              href="mailto:hello@woodwardwebdev.com"
-              onClick={() => navigator.clipboard.writeText("hello@woodwardwebdev.com")}
+              href="mailto:hello@woodwardstudio.dev"
+              color="inherit"
+              onClick={() => navigator.clipboard.writeText("hello@woodwardstudio.dev")}
               sx={{
                 fontWeight: 600,
                 fontSize: "0.95rem",
@@ -122,15 +125,36 @@ export default function ServicesSection() {
                 borderRadius: 2,
               }}
             >
-              hello@woodwardwebdev.com
+              hello@woodwardstudio.dev
             </Button>
           </Grid>
 
           <Grid size={{ xs: 12, md: 6 }}>
+            {/* <MotionButton
+                variant="outlined"
+                // size="large"
+                color="inherit"
+                whileHover={{ scale: 1.1 }}
+                sx={{
+                    borderRadius: "24px",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    boxShadow: "0 10px 30px rgba(0,0,0,.35)",
+                    "&:hover": {
+                        bgcolor: "rgba(255,255,255,0.02)",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 12px 40px rgba(0,0,0,.45)"
+                    }
+                }}
+                component="a"
+                target="_blank"
+                href="https://calendly.com/mwoodward1-woodwardwebdev/30min"
+            >
+                Book a Free Consultation
+            </MotionButton> */}
             <Button
                 fullWidth
-                variant="contained"
-                color="primary"
+                variant="outlined"
+                color="inherit"
                 component="a"
                 href="https://calendly.com/mwoodward1-woodwardwebdev/30min"
                 target="_blank"
@@ -140,6 +164,7 @@ export default function ServicesSection() {
                     py: 1.5,
                     textTransform: "uppercase",
                     borderRadius: 2,
+                    // bgcolor: "rgba(255,255,255,0.02)",
                 }}
             >
               Book a Free Consultation
