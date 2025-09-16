@@ -1,4 +1,4 @@
-import { Box, IconButton, Tooltip, Stack, Typography } from "@mui/material";
+import { Box, IconButton, Tooltip, Stack } from "@mui/material";
 import { LinkedIn, GitHub } from "@mui/icons-material";
 import XIcon from "@mui/icons-material/X";
 

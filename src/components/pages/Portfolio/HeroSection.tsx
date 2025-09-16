@@ -1,4 +1,4 @@
-import { Box, Container, Grid2 as Grid, Typography, Button, Avatar, Stack, Tooltip, Icon } from "@mui/material";
+import { Box, Grid2 as Grid, Typography, Avatar, Stack, Tooltip, Icon } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
     SiJavascript, SiTypescript, SiReact, SiNodedotjs,
@@ -8,9 +8,8 @@ import SlideIn from "@theme/animations/SlideIn";
 import SocialBar from "@components/custom/SocialBar/SocialBar";
 import headshotCropped from "@assets/headshot-cropped.png";
 import { motion } from "framer-motion";
-import DateTimeLabel from "@components/custom/DateTimeLabel/DateTimeLabel";
 
-const MotionButton = motion(Button as any);
+// const MotionButton = motion(Button as any);
 
 const techIcons = [
     { logo: <SiJavascript />, name: "JavaScript" },
@@ -40,13 +39,13 @@ const MarqueeInner = styled(motion.div)({
   alignItems: 'center',
 });
 
-const PlatformLogo = styled('img')({
-  height: 40,
-  filter: 'brightness(0) invert(1)',
-  opacity: 0.7,
-  transition: 'opacity 0.3s ease',
-  '&:hover': { opacity: 1 }
-});
+// const PlatformLogo = styled('img')({
+//   height: 40,
+//   filter: 'brightness(0) invert(1)',
+//   opacity: 0.7,
+//   transition: 'opacity 0.3s ease',
+//   '&:hover': { opacity: 1 }
+// });
 
 const Section = styled(Box)(({ theme }) => ({
     backgroundColor: theme.palette.background.default,

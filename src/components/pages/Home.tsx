@@ -6,13 +6,13 @@ import {
     Container, CssBaseline, Grid2 as Grid, ListItem, ListItemIcon, 
     ListItemText, Stack, Typography, createTheme
 } from "@mui/material";
-import { ThemeToggleButton } from "@theme/ThemeProvider";
+// import { ThemeToggleButton } from "@theme/ThemeProvider";
 import useUtilityStore from "@store/utilityStore";
 import HeroSection, { PlatformCarousel } from "./Portfolio/HeroSection";
 import { ExperienceSection2 } from "./Portfolio/ExperienceSection2";
 import { cms } from "@config/../data/cms";
 import SlideIn from "@theme/animations/SlideIn";
-import ProjectCard from "./Portfolio/ProjectCard";
+// import ProjectCard from "./Portfolio/ProjectCard";
 import ServicesSection from "./Portfolio/ServicesSection";
 // import TestimonialsSection from "./Portfolio/TestimonialSection";
 import CustomCursor from "@theme/animations/CircleCursor";
@@ -127,6 +127,7 @@ const Home = () => {
                         <SlideIn>
                             <Typography variant="h4" fontWeight={600}>Showcase</Typography>
                             <ListItemText secondary="Projects, Pipelines & OSS Systems" sx={{ pl: 1, mb: 4 }} />
+                            {/* @ts-ignore */}
                             <ProjectGallery projects={appConfigQuery?.data?.cms?.showcase || []} />
                             {/* <Grid container spacing={2}>
                                 {appConfigQuery.data.cms.showcase.map((project, index) => (

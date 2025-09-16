@@ -16,12 +16,24 @@ type Project = {
   tags: string[];
 };
 
-export function ProjectGallery({ projects }: { projects: Project[] }) {
+type Project2 = {
+    name: string;
+    description: string;
+    thumb: string;        // 16:10 image URL
+    href: string;         // live/demo or case study
+    live: string;         // live/demo or case study
+    repo?: string;
+    caseStudy?: string;
+    tags: string[];
+    tech: string[];
+  };
+
+export function ProjectGallery({ projects }: { projects: Project2[] }) {
   return (
     <Grid container spacing={3}>
       {projects.map((p, i) => (
-        <Grid key={p.title} size={{ xs: 12, sm: 6, md: 4 }}>
-            {console.log(p)}
+        <Grid key={p.name} size={{ xs: 12, sm: 6, md: 4 }}>
+
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -50,7 +62,9 @@ function ProjectCard({
   title, blurb, cover, href, repo, caseStudy, tags, index
 }: Project & { index: number }) {
   return (
-    <Card sx={{
+    <Card
+    key={index}
+    sx={{
       overflow: "hidden",
       borderRadius: 3,
       border: "1px solid",
