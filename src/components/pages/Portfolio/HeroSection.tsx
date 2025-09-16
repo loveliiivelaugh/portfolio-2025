@@ -114,8 +114,9 @@ const techIcons = [
 ];
 
 // constants
-const ICON_GAP_PX = 80;     // gap between individual icons
-const SET_GAP_PX = 120;    // <-- gap between the end and the next start
+// constants
+const ICON_GAP_PX = 80;   // between individual icons
+const SET_GAP_PX = 80;  // <-- visible blank gap between loops (tweak)
 
 const MarqueeWrapper = styled(Box)(({ theme }) => ({
     position: "relative",
@@ -123,16 +124,16 @@ const MarqueeWrapper = styled(Box)(({ theme }) => ({
     width: "100%",
     backgroundColor: theme.palette.background.default,
     WebkitMaskImage:
-        "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+        "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
     maskImage:
-        "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+        "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
 }));
 
 const Track = styled(motion.div)({
     position: "absolute",
-    inset: 0,                     // fill wrapper height
+    inset: 0,
     display: "flex",
-    alignItems: "center",         // vertical centering
+    alignItems: "center",
     willChange: "transform",
 });
 
@@ -140,11 +141,18 @@ const OneSet = React.forwardRef<HTMLDivElement>((_p, ref) => (
     <Box ref={ref} sx={{ display: "flex", alignItems: "center", gap: `${ICON_GAP_PX}px`, py: 0.5 }}>
         {techIcons.map((p, i) => (
             <Tooltip title={p.name} key={`${p.name}-${i}`}>
-                <Icon sx={{
-                    fontSize: 28, lineHeight: 1, display: "inline-flex", alignItems: "center",
-                    color: "text.secondary", opacity: 0.8,
-                    transition: "opacity .2s,color .2s", "&:hover": { opacity: 1, color: "primary.main" }
-                }}>
+                <Icon
+                    sx={{
+                        fontSize: 28,
+                        lineHeight: 1,
+                        display: "inline-flex",
+                        alignItems: "center",
+                        color: "text.secondary",
+                        opacity: 0.8,
+                        transition: "opacity .2s ease, color .2s ease",
+                        "&:hover": { opacity: 1, color: "primary.main" },
+                    }}
+                >
                     {p.logo}
                 </Icon>
             </Tooltip>
@@ -153,27 +161,30 @@ const OneSet = React.forwardRef<HTMLDivElement>((_p, ref) => (
 ));
 OneSet.displayName = "OneSet";
 
-const Spacer = () => <Box sx={{ width: SET_GAP_PX, height: 1 }} />;
+const Spacer = () => (
+    <Box sx={{ flex: `0 0 ${SET_GAP_PX}px`, width: SET_GAP_PX, height: 1 }} />
+);
 
 export function PlatformCarousel() {
     const wrapperRef = React.useRef<HTMLDivElement>(null);
     const setRef = React.useRef<HTMLDivElement>(null);
 
-    const [cycleWidth, setCycleWidth] = React.useState(0); // width of one set + spacer
-    const [setHeight, setSetHeight] = React.useState(48);
+    const [cycleWidth, setCycleWidth] = React.useState(0); // one set + spacer
+    const [rowHeight, setRowHeight] = React.useState(48);
     const [repeatCount, setRepeatCount] = React.useState(2);
 
     React.useLayoutEffect(() => {
         const measure = () => {
-            const sw = setRef.current?.offsetWidth ?? 0;                         // one set width
-            const sh = setRef.current?.getBoundingClientRect().height ?? 48;
+            const rect = setRef.current?.getBoundingClientRect();
+            const sw = rect?.width ?? 0;                        // sub-pixel precise
+            const sh = rect?.height ?? 48;
             const ww = wrapperRef.current?.offsetWidth ?? 0;
 
             if (sw > 0) {
-                const cycle = sw + SET_GAP_PX;                                     // <-- include spacer
+                const cycle = Math.round(sw + SET_GAP_PX + 0.5);  // avoid 1px seam
                 setCycleWidth(cycle);
-                setSetHeight(Math.max(48, Math.ceil(sh)));
-                setRepeatCount(Math.max(2, Math.ceil(ww / cycle) + 2));            // compute with cycle
+                setRowHeight(Math.max(48, Math.ceil(sh)));
+                setRepeatCount(Math.max(2, Math.ceil(ww / cycle) + 2));
             }
         };
         measure();
@@ -183,23 +194,21 @@ export function PlatformCarousel() {
 
     return (
         <Box sx={{ py: 4 }}>
-            <MarqueeWrapper ref={wrapperRef} sx={{ height: setHeight }}>
+            <MarqueeWrapper ref={wrapperRef} sx={{ height: rowHeight }}>
                 <Track
-                    animate={cycleWidth ? { x: [0, -cycleWidth] } : undefined}        // move exactly one cycle
+                    animate={cycleWidth ? { x: [0, -cycleWidth] } : undefined}
                     transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
                 >
-                    {/* first measured cycle */}
+                    {/* measured cycle */}
                     <OneSet ref={setRef} />
                     <Spacer />
-
-                    {/* duplicates to cover wide viewports */}
+                    {/* extras */}
                     {Array.from({ length: repeatCount - 1 }).map((_, i) => (
                         <React.Fragment key={i}>
                             <OneSet />
                             <Spacer />
                         </React.Fragment>
                     ))}
-                    {/* <> space </> */}
                 </Track>
             </MarqueeWrapper>
         </Box>
