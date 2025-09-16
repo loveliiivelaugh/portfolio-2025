@@ -28,6 +28,8 @@ import { Place } from "@mui/icons-material";
 import { ProjectGallery } from "@components/custom/ProjectGallery";
 import DateTimeLabel from "@components/custom/DateTimeLabel/DateTimeLabel";
 import FeaturedWriting, { PostItem } from "@components/custom/WritingSection";
+import MovingOrbs from "@components/custom/MovingOrbs";
+import SectionPattern from "@components/custom/PatternSection";
 
 // TODO: New Reusable Component
 // *QueryWrapper family
@@ -67,9 +69,10 @@ const Home = () => {
         <ThemeProvider theme={createTheme({ palette: { mode: colorMode } })}>
             <CssBaseline />
             <Container maxWidth={false}>
+                <MovingOrbs />
                 {/* Only use custom cursor on Desktop */}
                 {!isMobile && <CustomCursor active={isHovering} />}
-                <Box sx={{ position: "fixed", top: 20, right: 20, zIndex: 100 }}>
+                <Box sx={{ position: "fixed", top: 20, right: 36, zIndex: 100 }}>
                     <Button
                         component="a"
                         target="_blank"
@@ -90,7 +93,7 @@ const Home = () => {
                         }}
                     >Download Resume <DownloadIcon /></Button>
                 </Box>
-                <Box sx={{ position: "sticky", marginTop: "-60px" }}>
+                <Box sx={{ position: "sticky", marginTop: "-72px", marginLeft: "12px" }}>
                     {/* Chicago, IL, USA <Place /> */}
                     <ListItemText
                         primary={<>Chicago, IL USA <Place /></>}
@@ -117,7 +120,9 @@ const Home = () => {
                     </Grid> */}
 
                     <Grid size={12}>
-                        <HeroSection />
+                        <SectionPattern variant="checker">
+                            <HeroSection />
+                        </SectionPattern>
                     </Grid>
 
                     <Grid size={12}>
@@ -125,6 +130,7 @@ const Home = () => {
                     </Grid>
 
                     <Grid size={12} py={0}>
+                        <SectionPattern variant="grid">
                         <SlideIn>
                             <Typography variant="h4" fontWeight={600}>Showcase</Typography>
                             <ListItemText secondary="Projects, Pipelines & OSS Systems" sx={{ pl: 1, mb: 4 }} />
@@ -149,9 +155,11 @@ const Home = () => {
                                 <ShowcaseCarousel projects={getData(appConfigQuery, "cms.showcase", (data: any) => data) as any} />
                             </Grid> */}
                         </SlideIn>
+                        </SectionPattern>
                     </Grid>
                     
                     <Grid size={12} py={6}>
+                        <SectionPattern variant="checker">
                         {/* <DocumentationSection /> */}
                         <SlideIn>
                             <Typography variant="h4" fontWeight={600}>Documentation</Typography>
@@ -191,14 +199,17 @@ const Home = () => {
                                 )))}
                             </Grid>
                         </SlideIn>
+                        </SectionPattern>
                     </Grid>
 
                     {/* Experience */}
                     <Grid size={12} py={4}>
-                        <SlideIn>
-                            <Typography variant="h4" fontWeight={600} gutterBottom>Experience</Typography>
-                            <ExperienceSection2 />
-                        </SlideIn>
+                        <SectionPattern variant="grid">
+                            <SlideIn>
+                                <Typography variant="h4" fontWeight={600} gutterBottom>Experience</Typography>
+                                <ExperienceSection2 />
+                            </SlideIn>
+                        </SectionPattern>
                     </Grid>
 
                     {/* <TestimonialsSection /> */}
@@ -211,15 +222,21 @@ const Home = () => {
                     {/* <CoreValues /> */}
 
                     <Grid size={12} py={4}>
-                        <Container>
-                            <SlideIn>
-                                {/* <Typography variant="h4" fontWeight={600} gutterBottom>Writing</Typography> */}
-                                <FeaturedWriting posts={cms.posts as PostItem[]} />
-                            </SlideIn>
-                        </Container>
+                        <SectionPattern variant="checker">
+                            <Container>
+                                <SlideIn>
+                                    {/* <Typography variant="h4" fontWeight={600} gutterBottom>Writing</Typography> */}
+                                    <FeaturedWriting posts={cms.posts as PostItem[]} />
+                                </SlideIn>
+                            </Container>
+                        </SectionPattern>
                     </Grid>
 
-                    <ServicesSection />
+                    <Grid size={12} py={4}>
+                        <SectionPattern variant="checker">
+                            <ServicesSection />
+                        </SectionPattern>
+                    </Grid>
 
                     {/* Pricing */}
                     {!hidePricing && (
