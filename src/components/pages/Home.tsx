@@ -31,7 +31,7 @@ import FeaturedWriting, { PostItem } from "@components/custom/WritingSection";
 import MovingOrbs from "@components/custom/MovingOrbs";
 import SectionPattern from "@components/custom/PatternSection";
 
-import { alpha, styled } from '@mui/material/styles';
+import { alpha } from '@mui/material/styles';
 
 const theme = createTheme({
     palette: {
@@ -90,80 +90,6 @@ const theme = createTheme({
                         backgroundColor: alpha(theme.palette.primary.main, 0.10),
                         color: theme.palette.primary.main,
                     },
-                }),
-            },
-        },
-    },
-});
-
-const theme2 = createTheme({
-    palette: {
-        mode: "dark",
-        primary: { main: "#0FA3B1" },              // your accent (ring color)
-        text: { primary: "#E6E9EE", secondary: "#AAB1BC" },
-    },
-    components: {
-        MuiButton: {
-            defaultProps: { disableElevation: true },
-            styleOverrides: {
-                root: ({ theme }) => ({
-                    textTransform: "none",
-                    borderRadius: 999,
-                    position: "relative",
-                    transition: "box-shadow .2s ease, color .2s ease, border-color .2s ease, background-color .2s ease",
-                    // ring color as a CSS var
-                    "--ring": alpha(theme.palette.primary.main, 0.22) as any,
-                    // base subtle stroke
-                    boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.06)",
-                    // ring on hover (outside only)
-                    "&:hover": {
-                        boxShadow: `0 0 0 8px var(--ring), inset 0 0 0 1px rgba(255,255,255,0.08)`,
-                    },
-                    // stronger ring for keyboard focus
-                    "&:focus-visible": {
-                        boxShadow: `0 0 0 10px ${alpha(theme.palette.primary.main, 0.30)}`,
-                        outline: "none",
-                    },
-                }),
-
-                // Contained: white pill at rest
-                contained: ({ theme }) => ({
-                    backgroundColor: theme.palette.common.white,
-                    color: "#0E1116",
-                    "&:hover": {
-                        backgroundColor: theme.palette.common.white,   // keep white; ring handles color
-                    },
-                }),
-
-                // Outlined: white stroke; ring on hover
-                outlined: ({ theme }) => ({
-                    color: theme.palette.common.white,
-                    borderColor: "rgba(255,255,255,0.28)",
-                    backgroundColor: "transparent",
-                    "&:hover": {
-                        backgroundColor: "transparent",
-                        borderColor: "rgba(255,255,255,0.55)",
-                    },
-                }),
-
-                // Text: neutral; ring only
-                text: {
-                    color: "#fff",
-                    backgroundColor: "transparent",
-                    "&:hover": { backgroundColor: "transparent" },
-                },
-            },
-        },
-
-        // (optional) IconButtons get the same ring
-        MuiIconButton: {
-            styleOverrides: {
-                root: ({ theme }) => ({
-                    borderRadius: 999,
-                    transition: "box-shadow .2s ease, color .2s ease, background-color .2s ease",
-                    "--ring": alpha(theme.palette.primary.main, 0.22) as any,
-                    "&:hover": { boxShadow: `0 0 0 8px var(--ring)` },
-                    "&:focus-visible": { boxShadow: `0 0 0 10px ${alpha(theme.palette.primary.main, 0.30)}` },
                 }),
             },
         },

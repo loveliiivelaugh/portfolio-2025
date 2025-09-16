@@ -15,7 +15,7 @@ import {
   SiGraphql, SiTypescript, SiNextdotjs, SiNotion, SiGithub, SiSlack,
 } from "react-icons/si";
 
-const MotionButton = motion(Button as any);
+// const MotionButton = motion(Button as any);
 
 const services = [
   // 🔧 Core Development
