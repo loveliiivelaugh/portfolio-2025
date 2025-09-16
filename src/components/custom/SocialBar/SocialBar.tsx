@@ -12,8 +12,8 @@ const socialLinks = [
 const SocialBar = () => {
     return (
         <Box>
-            <Typography variant="h6">Follow my work</Typography>
-            <Stack direction="row" spacing={2}>
+            {/* <Typography variant="h6">Follow my work 😎</Typography> */}
+            <Stack direction="row" spacing={2} sx={{ textAlign: "center", justifyContent: "center"}}>
             {socialLinks.map((social, index) => (
                 <Tooltip title={social.label}>
                     <IconButton key={index} component="a" href={social.link} target="_blank" rel="noopener noreferrer" color="primary">

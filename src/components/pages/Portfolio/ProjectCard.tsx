@@ -50,7 +50,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, imageUrl,
                     {title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                    {description.split(".")[0]}. 
+                    {description && description.split(".")[0]}. 
                     {/* {description.split(".")?.[1] && (
                         <Tooltip title={description}>
                             <Typography variant="body1" color="text.primary" sx={{ "&:hover": { cursor: "pointer" }}}>

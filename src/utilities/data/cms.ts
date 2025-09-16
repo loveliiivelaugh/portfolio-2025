@@ -63,52 +63,59 @@ export const cms = {
         {
             name: "Engineering Blog",
             slug: "michael-woodward-blog",
-            description: "A blog for sharing engineering knowledge and experiences.",
+            description: "My blog for sharing engineering knowledge and experiences.",
             tech: ["React", "TypeScript", "MUI", "Netlify", "Wordpress"],
             thumb: blogThumb,
-            live: "https://blog.woodwardwebdev.com",
+            live: "https://woodwardstudio.dev",
             github: "https://github.com/loveliiivelaugh/blog"
         },
         // Starting to submit proposals on just these 2 apps for now
         // These have the highest business value and the most potential for growth
         // These will save businesses money and/or make them more money
-        // {
-        //     "name": "BookMe",
-        //     "description": "A full-featured booking/appointment scheduling SaaS platform designed for small businesses, instructors, dentists, and service providers. It includes dynamic availability management, automated reminders, recurring billing with Stripe integration, and a polished user onboarding flow — all built with a scalable, component-driven frontend architecture.",
-        //     "github": "",
-        //     "live": "https://scheduletime.woodwardwebdev.com",
-        //     "thumb": "https://picsum.photos/400",
-        //     "tech": ["React", "Supabase", "Stripe", "Framer-Motion"]
-        // },
-        // todo: Complete these projects 
-        // {
-        //     "name": "Coffee Shop",
-        //     "description": "A coffee shop ecommerce prototype built using the Shopify platform.",
-        //     "github": "",
-        //     "live": "https://coffeeshop.woodwardwebdev.com",
-        //     "thumb": "https://picsum.photos/400"
-        // },
-        // {
-        //     "name": "Openfitness",
-        //     "description": "A nutrition and fitness tracking application.",
-        //     "github": "",
-        //     "live": "https://openfitness.woodwardwebdev.com",
-        //     "thumb": "https://picsum.photos/400"
-        // },
-        // {
-        //     "name": "Ai Chat",
-        //     "description": "An embeddable AI-powered chat assistant SaaS designed to integrate seamlessly into any business website or platform. It connects to a custom knowledge base to provide accurate, context-aware responses, streamlining customer support and automating FAQ handling using natural language understanding.",
-        //     "github": "",
-        //     "live": "https://aichat.woodwardwebdev.com",
-        //     "thumb": "https://picsum.photos/400",
-        //     "tech": ["React", "Supabase", "Stripe", "OpenAI", "Google Gemini2.5", "Framer-Motion"]
-        // },
-        // {
-        //     "name": "Stonetower Pizza",
-        //     "github": "A pizza shop ecommerce prototype built on the Stripe platform. Includes built-in PWA POS.",
-        //     "live": "https://stonetowerpizza.netlify.app",
-        //     "thumb": "https://picsum.photos/400"
-        // },
+        {
+            "name": "BloggerAI",
+            "description": "AI and personal context driven automated blog content for WordPress.",
+            "github": "",
+            "live": "https://bloggerai.woodwardstudio.dev",
+            "thumb": "https://picsum.photos/400",
+            "tech": ["React", "Supabase", "Stripe", "Framer-Motion"],
+            "slug": "bloggerai"
+        },
+        {
+            "name": "BookMe",
+            "description": `
+                A full-featured booking/appointment scheduling SaaS platform 
+                designed for small businesses, instructors, dentists, and service providers. 
+                It includes dynamic availability management, automated reminders, 
+                recurring billing with Stripe integration, and a polished user onboarding 
+                flow — all built with a scalable, component-driven frontend architecture.
+                Competitor to Calendly, but with a focus on small businesses and service providers.`,
+            "github": "",
+            "live": "https://booking.woodwardstudio.dev",
+            "thumb": "https://picsum.photos/400",
+            "tech": ["React", "Supabase", "Stripe", "Framer-Motion"],
+            "slug": "bookme"
+        },
+        {
+            "name": "Openfitness",
+            "description": "A nutrition and fitness tracking application. Competition to MyFitnessPal.",
+            "github": "",
+            // "live": "https://openfitness.woodwardwebdev.com",
+            "live": "",
+            "thumb": "https://picsum.photos/400",
+            "tech": ["React", "Supabase", "Stripe", "Framer-Motion"],
+            "slug": "openfitness"
+        },
+        {
+            "name": "Stonetower Pizza",
+            "description": "A single web app to manage inventory, orders, and payments for a small restaurant. Competitor to Toast POS.",
+            "description2": "A pizza shop ecommerce prototype built on the Stripe platform. Includes built-in PWA POS.",
+            // "live": "https://stonetowerpizza.netlify.app",
+            "live": "",
+            "thumb": "https://picsum.photos/400",
+            "tech": ["React", "Supabase", "Stripe", "Framer-Motion"],
+            "slug": "stonetower-pizza"
+        },
     ],
     docs: [
         {

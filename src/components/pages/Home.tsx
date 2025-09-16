@@ -1,12 +1,14 @@
 import { ThemeProvider } from "@emotion/react"
 import {
+    Box,
+    Button,
     Card, CardContent, CircularProgress, 
     Container, CssBaseline, Grid2 as Grid, ListItem, ListItemIcon, 
     ListItemText, Stack, Typography, createTheme
 } from "@mui/material";
 import { ThemeToggleButton } from "@theme/ThemeProvider";
 import useUtilityStore from "@store/utilityStore";
-import HeroSection from "./Portfolio/HeroSection";
+import HeroSection, { PlatformCarousel } from "./Portfolio/HeroSection";
 import { ExperienceSection2 } from "./Portfolio/ExperienceSection2";
 import { cms } from "@config/../data/cms";
 import SlideIn from "@theme/animations/SlideIn";
@@ -21,6 +23,10 @@ import CertificationsSection from "./Portfolio/CertificationSection";
 import CoreValues from "./Portfolio/CoreValues";
 import ExperienceTimeline from "./Portfolio/ExperienceTimelineSection";
 import { useIsMobile } from "@lib/useIsMobile";
+import { DownloadIcon } from "@radix-ui/react-icons";
+import { Place } from "@mui/icons-material";
+import { ProjectGallery } from "@components/custom/ProjectGallery";
+import DateTimeLabel from "@components/custom/DateTimeLabel/DateTimeLabel";
 
 // TODO: New Reusable Component
 // *QueryWrapper family
@@ -59,38 +65,72 @@ const Home = () => {
     return (
         <ThemeProvider theme={createTheme({ palette: { mode: colorMode } })}>
             <CssBaseline />
-            <Container maxWidth="md">
+            <Container maxWidth={false}>
                 {/* Only use custom cursor on Desktop */}
                 {!isMobile && <CustomCursor active={isHovering} />}
+                <Box sx={{ position: "fixed", top: 20, right: 20, zIndex: 100 }}>
+                    <Button
+                        component="a"
+                        target="_blank"
+                        href="https://docs.google.com/document/d/1XRXuKHKSs5A1Kh2XkxHu-qxJpbrd527_ug9ycvp7u2o/edit?usp=sharing"
+                        color="inherit"
+                        variant="outlined"
+                        sx={{ 
+                            display: "flex", alignItems: "center", gap: 1,
+                            backdropFilter: "blur(10px)",
+                            borderRadius: "24px",
+                            border: "1px solid rgba(255,255,255,0.08)",
+                            boxShadow: "0 10px 30px rgba(0,0,0,.35)",
+                            "&:hover": {
+                                bgcolor: "rgba(255,255,255,0.02)",
+                                transform: "translateY(-2px)",
+                                boxShadow: "0 12px 40px rgba(0,0,0,.45)"
+                            }
+                        }}
+                    >Download Resume <DownloadIcon /></Button>
+                </Box>
+                <Box sx={{ position: "sticky", marginTop: "-60px" }}>
+                    {/* Chicago, IL, USA <Place /> */}
+                    <ListItemText
+                        primary={<>Chicago, IL USA <Place /></>}
+                        secondary={<span style={{ fontSize: "12px" }}><DateTimeLabel /> CST</span>}
+                        sx={{ color: "text.secondary" }}
+                    />
+                </Box>
                 <Grid 
                     container 
                     p={4} 
                     spacing={2}
-                    sx={{ 
-                        maxWidth: "100vw", 
-                        border: `1px solid ${colorMode === "dark" ? "white" : "black"}`, 
-                        borderRadius: "24px",
-                        mb: 4
-                    }}
+                    // sx={{ 
+                    //     maxWidth: "100vw", 
+                    //     border: `1px solid ${colorMode === "dark" ? "white" : "black"}`, 
+                    //     borderRadius: "24px",
+                    //     mb: 4
+                    // }}
                     onMouseEnter={() => setIsHovering(true)}
                     onMouseLeave={() => setIsHovering(false)}
                 >
                     
-                    <Grid size={12} sx={{ display: "flex", justifyContent: "end" }}>
+                    {/* <Grid size={12} sx={{ display: "flex", justifyContent: "end" }}>
                         <ThemeToggleButton />
-                    </Grid>
+                    </Grid> */}
 
                     <Grid size={12}>
                         <HeroSection />
                     </Grid>
 
-                    <Grid size={12} py={6}>
+                    <Grid size={12}>
+                        <PlatformCarousel />
+                    </Grid>
+
+                    <Grid size={12} py={0}>
                         <SlideIn>
                             <Typography variant="h4" fontWeight={600}>Showcase</Typography>
                             <ListItemText secondary="Projects, Pipelines & OSS Systems" sx={{ pl: 1, mb: 4 }} />
-                            <Grid container spacing={2}>
+                            <ProjectGallery projects={appConfigQuery?.data?.cms?.showcase || []} />
+                            {/* <Grid container spacing={2}>
                                 {appConfigQuery.data.cms.showcase.map((project, index) => (
-                                    <Grid size={{ sm: 12, md: 6 }} sx={{ display: "flex", justifyContent: "space-around"}}>
+                                    <Grid size={{ sm: 12, md: 3, lg: 3 }} sx={{ display: "flex", justifyContent: "space-around"}}>
                                         <ProjectCard
                                             key={index}
                                             title={project.name}
@@ -102,7 +142,7 @@ const Home = () => {
                                         />
                                     </Grid>
                                 ))}
-                            </Grid>
+                            </Grid> */}
                             {/* <Grid container spacing={2} p={2}>
                                 <ShowcaseCarousel projects={getData(appConfigQuery, "cms.showcase", (data: any) => data) as any} />
                             </Grid> */}

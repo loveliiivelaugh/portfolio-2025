@@ -58,12 +58,12 @@ const Home = () => {
                                 <Typography variant="h5" sx={{ mb: 1 }}>
                                     Web Developer <Chip label="est. 2020" sx={{ ml: 1 }} />
                                 </Typography>
-                                <Typography variant="subtitle1">
+                                {/* <Typography variant="subtitle1">
                                     Applications Engineer @{" "}
                                     <a href="https://www.discover.com" target="_blank" rel="noreferrer">
                                         Discover Financial Services
                                     </a>
-                                </Typography>
+                                </Typography> */}
                                 <Typography variant="body1" sx={{ mt: 1 }}>
                                     JavaScript · TypeScript · React · Node.js · GraphQL
                                 </Typography>
