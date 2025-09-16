@@ -1,5 +1,9 @@
 import guardianOssThumb from "../assets/guardian-oss-thumb-2.png";
-import blogThumb from "../assets/blog-thumb.png";
+import blogThumb from "../assets/blog-thumb2.png";
+import bloggeraiThumb from "../assets/bloggerai-thumb.png";
+import bookmeThumb from "../assets/bookme-thumb2.png";
+import openfitnessThumb from "../assets/openfitness-thumb.png";
+import stonetowerPizzaThumb from "../assets/stonetower-pizza-thumb.png";
 
 export const cms = {
     workExperience: [
@@ -77,7 +81,7 @@ export const cms = {
             "description": "AI and personal context driven automated blog content for WordPress.",
             "github": "",
             "live": "https://bloggerai.woodwardstudio.dev",
-            "thumb": "https://picsum.photos/400",
+            "thumb": bloggeraiThumb,
             "tech": ["React", "Supabase", "Stripe", "Framer-Motion"],
             "slug": "bloggerai"
         },
@@ -92,7 +96,8 @@ export const cms = {
                 Competitor to Calendly, but with a focus on small businesses and service providers.`,
             "github": "",
             "live": "https://booking.woodwardstudio.dev",
-            "thumb": "https://picsum.photos/400",
+            // "thumb": "https://picsum.photos/400",
+            "thumb": bookmeThumb,
             "tech": ["React", "Supabase", "Stripe", "Framer-Motion"],
             "slug": "bookme"
         },
@@ -102,7 +107,7 @@ export const cms = {
             "github": "",
             // "live": "https://openfitness.woodwardwebdev.com",
             "live": "",
-            "thumb": "https://picsum.photos/400",
+            "thumb": openfitnessThumb,
             "tech": ["React", "Supabase", "Stripe", "Framer-Motion"],
             "slug": "openfitness"
         },
@@ -112,7 +117,8 @@ export const cms = {
             "description2": "A pizza shop ecommerce prototype built on the Stripe platform. Includes built-in PWA POS.",
             // "live": "https://stonetowerpizza.netlify.app",
             "live": "",
-            "thumb": "https://picsum.photos/400",
+            // "thumb": "https://picsum.photos/400",
+            "thumb": stonetowerPizzaThumb,
             "tech": ["React", "Supabase", "Stripe", "Framer-Motion"],
             "slug": "stonetower-pizza"
         },
@@ -154,5 +160,37 @@ export const cms = {
             href: "https://swagger.io/",
             "link": "https://swagger.io/"
         }
+    ],
+    posts: [
+        {
+            title: "👋 Hi, I'm Michael Woodward — Welcome to My Engineering Lab",
+            date: "5/31/2025",
+            readTime: 1,
+            link: "https://woodwardstudio.dev/post/hi-im-michael-woodward-welcome-to-my-engineering-lab"
+        },
+        {
+            title: "🛣️ My Learning Journey into Software Engineering (and How You Can Follow It Too)",
+            date: "6/4/2025",
+            readTime: 5,
+            link: "https://woodwardstudio.dev/post/my-learning-journey-into-software-engineering-and-how-you-can-follow-it-too"
+        },
+        {
+            title: "📊 Why I Built My Own Analytics + Observability Stack (for $10/month)",
+            date: "6/4/2025",
+            readTime: 4,
+            link: "https://woodwardstudio.dev/post/why-i-built-my-own-analytics-observability-stack-for-10-month"
+        },
+        {
+            title: "⚡️Migrating Away From Zapier: Why Self-Hosted Automation",
+            date: "6/23/2025",
+            readTime: 3,
+            link: "https://woodwardstudio.dev/post/away-from-zapier-why-self-hosted-automation-with-n8n-is-the-smarter-long-term-move"
+        },
+        {
+            title: "🧠 Beyond Automation: Unveiling the Strategic Value of Intelligent Systems",
+            date: "9/15/2025",
+            readTime: 2,
+            link: "https://woodwardstudio.dev/post/beyond-automation-unveiling-the-strategic-value-of-intelligent-systems"
+        },
     ]
 };

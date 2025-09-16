@@ -1,5 +1,5 @@
 import { Box, IconButton, Tooltip, Stack } from "@mui/material";
-import { LinkedIn, GitHub } from "@mui/icons-material";
+import { LinkedIn, GitHub, OpenInNew } from "@mui/icons-material";
 import XIcon from "@mui/icons-material/X";
 
 const socialLinks = [
@@ -7,6 +7,7 @@ const socialLinks = [
     { label: "X", icon: <XIcon />, link: "https://www.twitter.com" },
     { label: "GitHub", icon: <GitHub />, link: "https://github.com/loveliiivelaugh" },
     { label: "Blog", icon: <>📚</>, link: "https://www.blog.woodardwebdev.com" },
+    // { label: "Blog", icon: <OpenInNew />, link: "https://www.blog.woodardwebdev.com" },
 ];
 
 const SocialBar = () => {
@@ -16,7 +17,7 @@ const SocialBar = () => {
             <Stack direction="row" spacing={2} sx={{ textAlign: "center", justifyContent: "center"}}>
             {socialLinks.map((social, index) => (
                 <Tooltip title={social.label}>
-                    <IconButton key={index} component="a" href={social.link} target="_blank" rel="noopener noreferrer" color="primary">
+                    <IconButton key={index} component="a" href={social.link} target="_blank" rel="noopener noreferrer" color="inherit">
                         {social.icon}
                     </IconButton>
                 </Tooltip>

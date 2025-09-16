@@ -27,6 +27,7 @@ import { DownloadIcon } from "@radix-ui/react-icons";
 import { Place } from "@mui/icons-material";
 import { ProjectGallery } from "@components/custom/ProjectGallery";
 import DateTimeLabel from "@components/custom/DateTimeLabel/DateTimeLabel";
+import FeaturedWriting, { PostItem } from "@components/custom/WritingSection";
 
 // TODO: New Reusable Component
 // *QueryWrapper family
@@ -201,13 +202,22 @@ const Home = () => {
                     </Grid>
 
                     {/* <TestimonialsSection /> */}
-                    <CertificationsSection />
+                    {/* <CertificationsSection /> */}
 
-                    <AboutSection />
+                    {/* <AboutSection /> */}
 
-                    <ExperienceTimeline />
+                    {/* <ExperienceTimeline /> */}
 
-                    <CoreValues />
+                    {/* <CoreValues /> */}
+
+                    <Grid size={12} py={4}>
+                        <Container>
+                            <SlideIn>
+                                {/* <Typography variant="h4" fontWeight={600} gutterBottom>Writing</Typography> */}
+                                <FeaturedWriting posts={cms.posts as PostItem[]} />
+                            </SlideIn>
+                        </Container>
+                    </Grid>
 
                     <ServicesSection />
 

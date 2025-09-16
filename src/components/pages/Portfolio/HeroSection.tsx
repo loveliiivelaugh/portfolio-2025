@@ -1,3 +1,4 @@
+import React from "react";
 import { Box, Grid2 as Grid, Typography, Avatar, Stack, Tooltip, Icon } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
@@ -9,7 +10,95 @@ import SocialBar from "@components/custom/SocialBar/SocialBar";
 import headshotCropped from "@assets/headshot-cropped.png";
 import { motion } from "framer-motion";
 
-// const MotionButton = motion(Button as any);
+// // const MotionButton = motion(Button as any);
+
+// const techIcons = [
+//     { logo: <SiJavascript />, name: "JavaScript" },
+//     { logo: <SiTypescript />, name: "TypeScript" },
+//     { logo: <SiReact />, name: "React" },
+//     { logo: <SiNodedotjs />, name: "Node.js" },
+//     { logo: <SiSupabase />, name: "Supabase" },
+//     { logo: <SiDocker />, name: "Docker" },
+//     { logo: <SiPostgresql />, name: "PostgreSQL" },
+//     { logo: <SiOpenai />, name: "LLMs" },
+//     { logo: <SiZod />, name: "Zod/OpenAPI" },
+//     { logo: <SiBun />, name: "Bun Runtime" },
+// ];
+
+// // Styled Components
+// const MarqueeWrapper = styled(Box)(({ theme }) => ({
+//   overflow: 'hidden',
+//   position: 'relative',
+//   width: '100%',
+//   backgroundColor: theme.palette.background.default,
+// //   padding: theme.spacing(6, 0),
+// }));
+
+// const MarqueeInner = styled(motion.div)({
+//   display: 'flex',
+//   gap: '80px',
+//   alignItems: 'center',
+// });
+
+// // const PlatformLogo = styled('img')({
+// //   height: 40,
+// //   filter: 'brightness(0) invert(1)',
+// //   opacity: 0.7,
+// //   transition: 'opacity 0.3s ease',
+// //   '&:hover': { opacity: 1 }
+// // });
+
+// const Section = styled(Box)(({ theme }) => ({
+//     backgroundColor: theme.palette.background.default,
+//     color: theme.palette.text.primary,
+//     padding: theme.spacing(8, 0),
+// }));
+
+// export function PlatformCarousel() {
+//     return (
+//         <Section zIndex={100} sx={{ maxWidth: "90vw" }}>
+//             {/* <Container maxWidth="md">
+//                 <SlideIn>
+//                     <Typography variant="h4" fontWeight={600} textAlign="center" gutterBottom>
+//                         Platforms I Build With
+//                     </Typography>
+//                 </SlideIn> */}
+
+//                 <MarqueeWrapper>
+//                     <MarqueeInner
+//                         animate={{
+//                             x: ['0%', '-50%']
+//                         }}
+//                         transition={{
+//                             repeat: Infinity,
+//                             repeatType: 'loop',
+//                             duration: 40, // Smooth slow professional scroll
+//                             ease: 'linear'
+//                         }}
+//                     >
+//                         {[...techIcons, ...techIcons].map((platform, index) => (
+//                             <Tooltip title={platform.name} key={index}>
+//                                 <Icon>
+//                                     {platform.logo}
+//                                 </Icon>
+//                                 {/* {platform.logo} */}
+//                                 {/* <PlatformLogo src={platform.logo} alt={platform.name} /> */}
+//                             </Tooltip>
+//                         ))}
+//                     </MarqueeInner>
+//                 </MarqueeWrapper>
+//             {/* </Container> */}
+//         </Section>
+//     );
+// }
+// import { Box, Grid, Tooltip, Icon } from "@mui/material";
+// import { styled } from "@mui/material/styles";
+// import {
+//   SiJavascript, SiTypescript, SiReact, SiNodedotjs,
+//   SiDocker, SiPostgresql, SiOpenai, SiZod, SiBun, SiSupabase,
+// } from "react-icons/si";
+// import { motion } from "framer-motion";
+// import React from "react";
 
 const techIcons = [
     { logo: <SiJavascript />, name: "JavaScript" },
@@ -24,74 +113,98 @@ const techIcons = [
     { logo: <SiBun />, name: "Bun Runtime" },
 ];
 
-// Styled Components
+// constants
+const ICON_GAP_PX = 80;     // gap between individual icons
+const SET_GAP_PX = 120;    // <-- gap between the end and the next start
+
 const MarqueeWrapper = styled(Box)(({ theme }) => ({
-  overflow: 'hidden',
-  position: 'relative',
-  width: '100%',
-  backgroundColor: theme.palette.background.default,
-//   padding: theme.spacing(6, 0),
+    position: "relative",
+    overflow: "hidden",
+    width: "100%",
+    backgroundColor: theme.palette.background.default,
+    WebkitMaskImage:
+        "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+    maskImage:
+        "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
 }));
 
-const MarqueeInner = styled(motion.div)({
-  display: 'flex',
-  gap: '80px',
-  alignItems: 'center',
+const Track = styled(motion.div)({
+    position: "absolute",
+    inset: 0,                     // fill wrapper height
+    display: "flex",
+    alignItems: "center",         // vertical centering
+    willChange: "transform",
 });
 
-// const PlatformLogo = styled('img')({
-//   height: 40,
-//   filter: 'brightness(0) invert(1)',
-//   opacity: 0.7,
-//   transition: 'opacity 0.3s ease',
-//   '&:hover': { opacity: 1 }
-// });
+const OneSet = React.forwardRef<HTMLDivElement>((_p, ref) => (
+    <Box ref={ref} sx={{ display: "flex", alignItems: "center", gap: `${ICON_GAP_PX}px`, py: 0.5 }}>
+        {techIcons.map((p, i) => (
+            <Tooltip title={p.name} key={`${p.name}-${i}`}>
+                <Icon sx={{
+                    fontSize: 28, lineHeight: 1, display: "inline-flex", alignItems: "center",
+                    color: "text.secondary", opacity: 0.8,
+                    transition: "opacity .2s,color .2s", "&:hover": { opacity: 1, color: "primary.main" }
+                }}>
+                    {p.logo}
+                </Icon>
+            </Tooltip>
+        ))}
+    </Box>
+));
+OneSet.displayName = "OneSet";
 
-const Section = styled(Box)(({ theme }) => ({
-    backgroundColor: theme.palette.background.default,
-    color: theme.palette.text.primary,
-    padding: theme.spacing(8, 0),
-}));
+const Spacer = () => <Box sx={{ width: SET_GAP_PX, height: 1 }} />;
 
 export function PlatformCarousel() {
-    return (
-        <Section zIndex={100} sx={{ maxWidth: "90vw" }}>
-            {/* <Container maxWidth="md">
-                <SlideIn>
-                    <Typography variant="h4" fontWeight={600} textAlign="center" gutterBottom>
-                        Platforms I Build With
-                    </Typography>
-                </SlideIn> */}
+    const wrapperRef = React.useRef<HTMLDivElement>(null);
+    const setRef = React.useRef<HTMLDivElement>(null);
 
-                <MarqueeWrapper>
-                    <MarqueeInner
-                        animate={{
-                            x: ['0%', '-50%']
-                        }}
-                        transition={{
-                            repeat: Infinity,
-                            repeatType: 'loop',
-                            duration: 40, // Smooth slow professional scroll
-                            ease: 'linear'
-                        }}
-                    >
-                        {[...techIcons, ...techIcons].map((platform, index) => (
-                            <Tooltip title={platform.name} key={index}>
-                                <Icon>
-                                    {platform.logo}
-                                </Icon>
-                                {/* {platform.logo} */}
-                                {/* <PlatformLogo src={platform.logo} alt={platform.name} /> */}
-                            </Tooltip>
-                        ))}
-                    </MarqueeInner>
-                </MarqueeWrapper>
-            {/* </Container> */}
-        </Section>
+    const [cycleWidth, setCycleWidth] = React.useState(0); // width of one set + spacer
+    const [setHeight, setSetHeight] = React.useState(48);
+    const [repeatCount, setRepeatCount] = React.useState(2);
+
+    React.useLayoutEffect(() => {
+        const measure = () => {
+            const sw = setRef.current?.offsetWidth ?? 0;                         // one set width
+            const sh = setRef.current?.getBoundingClientRect().height ?? 48;
+            const ww = wrapperRef.current?.offsetWidth ?? 0;
+
+            if (sw > 0) {
+                const cycle = sw + SET_GAP_PX;                                     // <-- include spacer
+                setCycleWidth(cycle);
+                setSetHeight(Math.max(48, Math.ceil(sh)));
+                setRepeatCount(Math.max(2, Math.ceil(ww / cycle) + 2));            // compute with cycle
+            }
+        };
+        measure();
+        window.addEventListener("resize", measure);
+        return () => window.removeEventListener("resize", measure);
+    }, []);
+
+    return (
+        <Box sx={{ py: 4 }}>
+            <MarqueeWrapper ref={wrapperRef} sx={{ height: setHeight }}>
+                <Track
+                    animate={cycleWidth ? { x: [0, -cycleWidth] } : undefined}        // move exactly one cycle
+                    transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
+                >
+                    {/* first measured cycle */}
+                    <OneSet ref={setRef} />
+                    <Spacer />
+
+                    {/* duplicates to cover wide viewports */}
+                    {Array.from({ length: repeatCount - 1 }).map((_, i) => (
+                        <React.Fragment key={i}>
+                            <OneSet />
+                            <Spacer />
+                        </React.Fragment>
+                    ))}
+                    {/* <> space </> */}
+                </Track>
+            </MarqueeWrapper>
+        </Box>
     );
 }
-
-
 
 export default function HeroSection() {
     return (
@@ -152,7 +265,7 @@ export default function HeroSection() {
                         // mt={2}
                         // px={2}
                         color="text.secondary"
-                        // textAlign="center"
+                    // textAlign="center"
                     >
                         I build for the web, local-first infrastructure, and powerful developer tooling for teams building the future.
                     </Typography>
@@ -179,8 +292,8 @@ export default function HeroSection() {
                         <Avatar
                             src={headshotCropped}
                             variant="square"
-                            sx={{ 
-                                width: 200, height: 200, 
+                            sx={{
+                                width: 200, height: 200,
                                 mx: "auto", boxShadow: 3,
                                 borderRadius: "24px"
                             }}
