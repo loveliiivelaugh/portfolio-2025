@@ -15,110 +15,112 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import ArticleIcon from "@mui/icons-material/Article";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { motion } from "framer-motion";
-import { useParams, useNavigate } from "react-router-dom"; // if not using RR, replace with your router
+import { useNavigate } from "react-router-dom"; // if not using RR, replace with your router
 // import { useQuery } from "@tanstack/react-query";
 import { cms } from "@config/../data/cms";
 
-const WP_URL = (import.meta as any).env?.VITE_WP_URL //|| (process as any).env?.NEXT_PUBLIC_WP_URL || "";
+// const WP_URL = (import.meta as any).env?.VITE_WP_URL //|| (process as any).env?.NEXT_PUBLIC_WP_URL || "";
 
-type WPPost = {
-  id: number;
-  slug: string;
-  date: string;
-  title: { rendered: string };
-  excerpt: { rendered: string };
-  content: { rendered: string };
-  featured_media: number;
-  _embedded?: any;
-  acf?: Record<string, any>;
-};
+// type WPPost = {
+//   id: number;
+//   slug: string;
+//   date: string;
+//   title: { rendered: string };
+//   excerpt: { rendered: string };
+//   content: { rendered: string };
+//   featured_media: number;
+//   _embedded?: any;
+//   acf?: Record<string, any>;
+// };
 
-type Project = {
-  id: number;
-  slug: string;
-  title: string;
-  excerpt?: string;
-  contentHtml?: string;
-  cover?: string;
-  liveUrl?: string;
-  repoUrl?: string;
-  caseStudyUrl?: string;
-  tech: string[];
-  status?: string;
-  role?: string;
-  highlights: string[];
-  gallery: string[]; // image urls
-  date?: string;     // published/updated
-};
+// type Project = {
+//   id: number;
+//   slug: string;
+//   title: string;
+//   excerpt?: string;
+//   contentHtml?: string;
+//   cover?: string;
+//   liveUrl?: string;
+//   repoUrl?: string;
+//   caseStudyUrl?: string;
+//   tech: string[];
+//   status?: string;
+//   role?: string;
+//   highlights: string[];
+//   gallery: string[]; // image urls
+//   date?: string;     // published/updated
+// };
 
-function mapWpPostToProject(p: WPPost): Project {
-  const media = p._embedded?.["wp:featuredmedia"]?.[0];
-  const cover = media?.source_url;
+// function mapWpPostToProject(p: WPPost): Project {
+//   const media = p._embedded?.["wp:featuredmedia"]?.[0];
+//   const cover = media?.source_url;
 
-  // ACF fallbacks
-  const live = p.acf?.project_live_url || p.acf?.live_url || "";
-  const repo = p.acf?.project_repo_url || p.acf?.repo_url || "";
-  const status = p.acf?.project_status || p.acf?.status || "";
-  const role = p.acf?.project_role || p.acf?.role || "";
-  const techCsv = p.acf?.project_tech || p.acf?.tech || "";
-  const highlightsText = p.acf?.project_highlights || "";
-  const gallery = Array.isArray(p.acf?.project_gallery)
-    ? p.acf.project_gallery.map((g: any) => g?.url || g?.sizes?.large || g?.sizes?.full || g?.source_url).filter(Boolean)
-    : [];
+//   // ACF fallbacks
+//   const live = p.acf?.project_live_url || p.acf?.live_url || "";
+//   const repo = p.acf?.project_repo_url || p.acf?.repo_url || "";
+//   const status = p.acf?.project_status || p.acf?.status || "";
+//   const role = p.acf?.project_role || p.acf?.role || "";
+// //   const techCsv = p.acf?.project_tech || p.acf?.tech || "";
+//   const highlightsText = p.acf?.project_highlights || "";
+//   const gallery = Array.isArray(p.acf?.project_gallery)
+//     ? p.acf.project_gallery.map((g: any) => g?.url || g?.sizes?.large || g?.sizes?.full || g?.source_url).filter(Boolean)
+//     : [];
 
-  return {
-    id: p.id,
-    slug: p.slug,
-    date: p.date,
-    title: stripHtml(p.title.rendered),
-    excerpt: cleanWpHtml(p.excerpt?.rendered || ""),
-    contentHtml: p.content?.rendered || "",
-    cover,
-    liveUrl: live || undefined,
-    repoUrl: repo || undefined,
-    caseStudyUrl: p.acf?.case_study_url || undefined,
-    tech: (Array.isArray(techCsv) ? techCsv : String(techCsv)).split(",").map(s => s.trim()).filter(Boolean),
-    status: status || undefined,
-    role: role || undefined,
-    highlights: Array.isArray(highlightsText)
-      ? highlightsText
-      : String(highlightsText).split("\n").map(s => s.trim()).filter(Boolean),
-    gallery,
-  };
-}
+//   return {
+//     id: p.id,
+//     slug: p.slug,
+//     date: p.date,
+//     title: stripHtml(p.title.rendered),
+//     excerpt: cleanWpHtml(p.excerpt?.rendered || ""),
+//     contentHtml: p.content?.rendered || "",
+//     cover,
+//     liveUrl: live || undefined,
+//     repoUrl: repo || undefined,
+//     caseStudyUrl: p.acf?.case_study_url || undefined,
+//     // tech: (Array.isArray(techCsv) ? techCsv : String(techCsv)).split(",").map(s => s.trim()).filter(Boolean),
+//     tech: [],
+//     status: status || undefined,
+//     role: role || undefined,
+//     highlights: Array.isArray(highlightsText)
+//       ? highlightsText
+//       : String(highlightsText).split("\n").map(s => s.trim()).filter(Boolean),
+//     gallery,
+//   };
+// }
 
-function stripHtml(s: string) {
-  if (!s) return s;
-  const div = document.createElement("div");
-  div.innerHTML = s;
-  return div.textContent || div.innerText || "";
-}
+// function stripHtml(s: string) {
+//   if (!s) return s;
+//   const div = document.createElement("div");
+//   div.innerHTML = s;
+//   return div.textContent || div.innerText || "";
+// }
 
-function cleanWpHtml(html: string) {
-  // WordPress excerpts often include <p>…</p>
-  return html?.replace(/<\/?p>/g, "");
-}
+// function cleanWpHtml(html: string) {
+//   // WordPress excerpts often include <p>…</p>
+//   return html?.replace(/<\/?p>/g, "");
+// }
 
-async function fetchProjectBySlug(slug: string): Promise<Project> {
-  // Find portfolio category id
-  const catRes = await fetch(`${WP_URL}/wp-json/wp/v2/categories?per_page=100`);
-  const cats = await catRes.json();
-  const cat = cats.find((c: any) => c.slug === "portfolio");
-  const postsRes = await fetch(
-    `${WP_URL}/wp-json/wp/v2/posts?slug=${encodeURIComponent(slug)}&_embed${cat ? `&categories=${cat.id}` : ""}`
-  );
-  if (!postsRes.ok) throw new Error("Failed to load project");
-  const arr: WPPost[] = await postsRes.json();
-  if (!arr?.length) throw new Error("Project not found");
-  return mapWpPostToProject(arr[0]);
-}
+// async function fetchProjectBySlug(slug: string): Promise<Project> {
+//   // Find portfolio category id
+//   const catRes = await fetch(`${WP_URL}/wp-json/wp/v2/categories?per_page=100`);
+//   const cats = await catRes.json();
+//   const cat = cats.find((c: any) => c.slug === "portfolio");
+//   const postsRes = await fetch(
+//     `${WP_URL}/wp-json/wp/v2/posts?slug=${encodeURIComponent(slug)}&_embed${cat ? `&categories=${cat.id}` : ""}`
+//   );
+//   if (!postsRes.ok) throw new Error("Failed to load project");
+//   const arr: WPPost[] = await postsRes.json();
+//   if (!arr?.length) throw new Error("Project not found");
+//   return mapWpPostToProject(arr[0]);
+// }
 
-type ProjectPageProps = { slug?: string };
+// type ProjectPageProps = { slug?: string };
 
-export default function ProjectPage(props?: ProjectPageProps) {
+// export default function ProjectPage(props?: ProjectPageProps) {
+export default function ProjectPage() {
   // If you’re not using React Router, pass slug via props
-  const params = useParams();
-  const slug = props?.slug || params.slug || "";
+//   const params = useParams();
+//   const slug = props?.slug || params.slug || "";
   const nav = useNavigate();
 
 //   const { data: project, isLoading, error } = useQuery({
@@ -199,7 +201,7 @@ const error = null;
           <Stack spacing={1} sx={{ color: "#fff" }}>
             <Typography variant="h4" fontWeight={900}>{project.title}</Typography>
             <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
-              {project.tech.slice(0, 6).map(t => (
+              {project.tech.slice(0, 6).map((t: string) => (
                 <Chip key={t} label={t} size="small"
                   sx={{ bgcolor: "rgba(15,163,177,.14)", color: "#9be3ea", border: "1px solid rgba(15,163,177,.28)" }}
                 />
@@ -257,7 +259,7 @@ const error = null;
               <CardContent>
                 <Typography variant="h6" sx={{ mb: 1.5 }}>Highlights</Typography>
                 <Stack component="ul" spacing={1.2} sx={{ m: 0, pl: 2 }}>
-                  {project.highlights.map((h, i) => (
+                  {project.highlights.map((h: string, i: number) => (
                     <Typography key={i} component="li" variant="body2" color="text.secondary">{h}</Typography>
                   ))}
                 </Stack>
@@ -317,7 +319,7 @@ const error = null;
               <CardContent>
                 <Typography variant="h6" sx={{ mb: 1.5 }}>Gallery</Typography>
                 <Grid container spacing={1}>
-                  {project.gallery.map((url, i) => (
+                  {project.gallery.map((url: string, i: number) => (
                     <Grid item xs={6} key={i}>
                       <Box
                         component={motion.img}
