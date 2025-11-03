@@ -132,6 +132,13 @@ const Home = () => {
 
     let hidePricing = true;
 
+    // Google Developer Learning
+    // https://g.dev/michael-woodward
+    // Amazon Skills Learning
+    // https://skillsprofile.skillbuilder.aws/user/michael-woodward
+    // Salesforce Learning 
+    // https://www.salesforce.com/trailblazer/michaelawoodward
+
     return (
         <ThemeProvider theme={theme}
         // theme={createTheme({ palette: { mode: colorMode } })}
@@ -272,7 +279,7 @@ const Home = () => {
                                                 sx={{ display: "flex", alignItems: "center", textDecoration: "none" }}
                                             >
                                                 <ListItemIcon>
-                                                    <img src={(document as any).logo} alt={document.name} style={{ height: "100px" }} />
+                                                    <Box component="img" src={(document as any).logo} alt={document.name} sx={{ height: "100px", filter: "grayscale(100%)", transition: "all 0.3s ease", "&:hover": { filter: "grayscale(0%)", transform: "scale(1.1)" } }} />
                                                 </ListItemIcon>
                                                 <ListItem key={index} sx={{ textAlign: "center" }}>
                                                     <ListItemText

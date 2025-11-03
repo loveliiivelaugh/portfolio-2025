@@ -45,8 +45,8 @@ export function ProjectGallery({ projects }: { projects: Project2[] }) {
                             blurb={p.description.split(".")[0]}
                             cover={p.thumb}
                             href={p.live}
-                            repo={p.live}
-                            caseStudy={p.description}
+                            repo={p.repo}
+                            caseStudy={p.caseStudy}
                             tags={p.tech}
                             index={i}
                         />
@@ -58,102 +58,6 @@ export function ProjectGallery({ projects }: { projects: Project2[] }) {
     );
 }
 
-// function ProjectCard({
-//   title, blurb, cover, href, repo, caseStudy, tags, index
-// }: Project & { index: number }) {
-//   return (
-//     <Card
-//     key={index}
-//     sx={{
-//       overflow: "hidden",
-//       borderRadius: 3,
-//       border: "1px solid",
-//       borderColor: "rgba(255,255,255,0.08)",
-//       bgcolor: "background.paper",
-//       boxShadow: "0 10px 30px rgba(0,0,0,.35)",
-//       ":focus-within": { outline: "2px solid", outlineColor: "primary.main" }
-//     }}>
-//       <CardActionArea href={href} target="_blank" sx={{ position: "relative", display: "block" }}>
-//         {/* Cover */}
-//         <Box sx={{
-//           aspectRatio: "16 / 10",
-//           backgroundImage: `url(${cover})`,
-//           backgroundSize: "cover",
-//           backgroundPosition: "center",
-//           position: "relative"
-//         }}>
-//           {/* gradient to ensure text legible */}
-//           <Box sx={{
-//             position: "absolute", inset: 0,
-//             background: "linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,.05))"
-//           }} />
-//           {/* Hover/focus overlay */}
-//           <Box
-//             className="overlay"
-//             sx={{
-//               position: "absolute",
-//               inset: 0,
-//               display: "flex",
-//               flexDirection: "column",
-//               justifyContent: "flex-end",
-//               p: 2,
-//               color: "#fff",
-//               opacity: { xs: 1, md: 0 },                     // always visible on mobile
-//             //   "&:hover": { opacity: { xs: 1, md: 1 } },
-//               opacity: { xs: 1, md: 1 },                     // always visible
-//             // Show overlay on hover/focus of the parent (desktop)
-//             transform: { md: "translateY(6px)" },
-//             transition: "opacity .25s ease, transform .25s ease",
-//             pointerEvents: "none",
-//             [`&:where(:focus-within)`]: { opacity: 1, transform: "translateY(0)" },
-//             "&:hover .overlay, &:focus-visible .overlay, &:focus-within .overlay": {
-//                 opacity: 1,
-//                 transform: "translateY(0)",
-//             },
-//             }}
-//           >
-//             <Typography variant="h6" sx={{ mb: .5 }}>{title}</Typography>
-//             <Typography variant="body2" sx={{ opacity: .9, mb: 1.25 }}>{blurb}</Typography>
-//             <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap" sx={{ mb: 1 }}>
-//               {tags.map(t => (
-//                 <Chip key={t} label={t} size="small"
-//                   sx={{
-//                     bgcolor: "rgba(15,163,177,.14)",
-//                     color: "#9be3ea",
-//                     border: "1px solid rgba(15,163,177,.28)"
-//                   }} />
-//               ))}
-//             </Stack>
-//             {/* Quick actions */}
-//             <Stack direction="row" spacing={1} sx={{ pointerEvents: "auto" }}>
-//               {href && (
-//                 <IconButton size="small" color="inherit" aria-label="Open demo" href={href}>
-//                   <LaunchIcon fontSize="small" />
-//                 </IconButton>
-//               )}
-//               {repo && (
-//                 <IconButton size="small" color="inherit" aria-label="Open repository" href={repo}>
-//                   <GitHubIcon fontSize="small" />
-//                 </IconButton>
-//               )}
-//               {caseStudy && (
-//                 <IconButton size="small" color="inherit" aria-label="Read case study" href={caseStudy}>
-//                   <ArticleIcon fontSize="small" />
-//                 </IconButton>
-//               )}
-//             </Stack>
-//           </Box>
-//         </Box>
-
-//         {/* Always-visible metadata (helps SEO & non-hover devices) */}
-//         <CardContent sx={{ display: { xs: "block", md: "none" } }}>
-//           <Typography variant="h6" sx={{ mb: .5 }}>{title}</Typography>
-//           <Typography variant="body2" color="text.secondary">{blurb}</Typography>
-//         </CardContent>
-//       </CardActionArea>
-//     </Card>
-//   );
-// }
 function ProjectCard({
     title, blurb, cover, href, repo, caseStudy, tags, index
 }: Project & { index: number }) {
@@ -189,7 +93,7 @@ function ProjectCard({
                 {/* Cover */}
                 <Box
                     sx={{
-                        aspectRatio: "16 / 10",
+                        aspectRatio: title.startsWith("Memory") ? "2 / 1" : "16 / 10",
                         backgroundImage: `url(${cover})`,
                         backgroundSize: "cover",
                         backgroundPosition: "center",
@@ -250,17 +154,17 @@ function ProjectCard({
                         {/* Quick actions */}
                         <Stack direction="row" spacing={1} sx={{ pointerEvents: "auto" }}>
                             {href && (
-                                <IconButton size="small" color="inherit" aria-label="Open demo" href={href}>
+                                <IconButton size="small" color="inherit" aria-label="Open demo" href={href} target="_blank">
                                     <LaunchIcon fontSize="small" />
                                 </IconButton>
                             )}
                             {repo && (
-                                <IconButton size="small" color="inherit" aria-label="Open repository" href={repo}>
+                                <IconButton size="small" color="inherit" aria-label="Open repository" href={repo} target="_blank">
                                     <GitHubIcon fontSize="small" />
                                 </IconButton>
                             )}
                             {caseStudy && (
-                                <IconButton size="small" color="inherit" aria-label="Read case study" href={caseStudy}>
+                                <IconButton size="small" color="inherit" aria-label="Read case study" href={caseStudy} target="_blank">
                                     <ArticleIcon fontSize="small" />
                                 </IconButton>
                             )}

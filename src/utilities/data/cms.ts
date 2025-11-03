@@ -3,7 +3,8 @@ import blogThumb from "../assets/blog-thumb2.png";
 import bloggeraiThumb from "../assets/bloggerai-thumb.png";
 import bookmeThumb from "../assets/bookme-thumb2.png";
 import openfitnessThumb from "../assets/openfitness-thumb.png";
-import stonetowerPizzaThumb from "../assets/stonetower-pizza-thumb.png";
+// import stonetowerPizzaThumb from "../assets/stonetower-pizza-thumb.png";
+import memorymeThumb from "../assets/memoryme-thumb2.png";
 
 export const cms = {
     workExperience: [
@@ -62,7 +63,9 @@ export const cms = {
             tech: ["Bun", "Hono", "Supabase", "Qdrant", "Ollama", "Zod", "TypeScript"],
             thumb: guardianOssThumb,
             // live: "https://github.com/loveliiivelaugh/guardian-oss",
-            github: "https://github.com/loveliiivelaugh/guardian-oss"
+            github: "https://github.com/loveliiivelaugh/guardian-oss",
+            repo: "https://github.com/loveliiivelaugh/guardian-oss",
+            caseStudy: "https://woodwardstudio.dev/post/introducing-guardian-oss-a-minimal-ai-automation-core"
         },
         {
             name: "Engineering Blog",
@@ -71,7 +74,8 @@ export const cms = {
             tech: ["React", "TypeScript", "MUI", "Netlify", "Wordpress"],
             thumb: blogThumb,
             live: "https://woodwardstudio.dev",
-            github: "https://github.com/loveliiivelaugh/blog"
+            // github: "https://github.com/loveliiivelaugh/blog"
+            caseStudy: "https://woodwardstudio.dev/post/hi-im-michael-woodward-welcome-to-my-engineering-lab"
         },
         // Starting to submit proposals on just these 2 apps for now
         // These have the highest business value and the most potential for growth
@@ -79,11 +83,12 @@ export const cms = {
         {
             "name": "BloggerAI",
             "description": "AI and personal context driven automated blog content for WordPress.",
-            "github": "",
+            // "github": "",
             "live": "https://bloggerai.woodwardstudio.dev",
             "thumb": bloggeraiThumb,
-            "tech": ["React", "Supabase", "Stripe", "Framer-Motion"],
-            "slug": "bloggerai"
+            "tech": ["React", "Supabase", "Stripe", "Framer-Motion", "AI", "Vector", "Graph", "Qdrant", "Pinecone"],
+            "slug": "bloggerai",
+            caseStudy: "https://woodwardstudio.dev/series/bloggerai"
         },
         {
             "name": "BookMe",
@@ -94,9 +99,8 @@ export const cms = {
                 recurring billing with Stripe integration, and a polished user onboarding 
                 flow — all built with a scalable, component-driven frontend architecture.
                 Competitor to Calendly, but with a focus on small businesses and service providers.`,
-            "github": "",
+            // "github": "",
             "live": "https://booking.woodwardstudio.dev",
-            // "thumb": "https://picsum.photos/400",
             "thumb": bookmeThumb,
             "tech": ["React", "Supabase", "Stripe", "Framer-Motion"],
             "slug": "bookme"
@@ -104,24 +108,33 @@ export const cms = {
         {
             "name": "Openfitness",
             "description": "A nutrition and fitness tracking application. Competition to MyFitnessPal.",
-            "github": "",
-            // "live": "https://openfitness.woodwardwebdev.com",
-            "live": "",
+            // "github": "",
+            "live": "https://openfitness-api.woodwardstudio.dev/ui2",
             "thumb": openfitnessThumb,
-            "tech": ["React", "Supabase", "Stripe", "Framer-Motion"],
-            "slug": "openfitness"
+            "tech": ["React Native", "Supabase", "Stripe", "Framer-Motion", "Qdrant", "Pinecone", "AI"],
+            "slug": "openfitness",
+            caseStudy: "https://woodwardstudio.dev/series/openfitness"
         },
         {
-            "name": "Stonetower Pizza",
-            "description": "A single web app to manage inventory, orders, and payments for a small restaurant. Competitor to Toast POS.",
-            "description2": "A pizza shop ecommerce prototype built on the Stripe platform. Includes built-in PWA POS.",
-            // "live": "https://stonetowerpizza.netlify.app",
-            "live": "",
-            // "thumb": "https://picsum.photos/400",
-            "thumb": stonetowerPizzaThumb,
-            "tech": ["React", "Supabase", "Stripe", "Framer-Motion"],
-            "slug": "stonetower-pizza"
+            "name": "Memory.me",
+            "description": "",
+            // "github": "",
+            "live": "https://memory.woodwardwebdev.com",
+            "thumb": memorymeThumb,
+            "tech": ["React", "Supabase", "Stripe", "Framer-Motion", "Qdrant", "Pinecone", "AI", "Vector", "Graph"],
+            "slug": "memoryme"
         },
+        // {
+        //     "name": "Stonetower Pizza",
+        //     "description": "A single web app to manage inventory, orders, and payments for a small restaurant. Competitor to Toast POS.",
+        //     "description2": "A pizza shop ecommerce prototype built on the Stripe platform. Includes built-in PWA POS.",
+        //     // "live": "https://stonetowerpizza.netlify.app",
+        //     "live": "",
+        //     // "thumb": "https://picsum.photos/400",
+        //     "thumb": stonetowerPizzaThumb,
+        //     "tech": ["React", "Supabase", "Stripe", "Framer-Motion"],
+        //     "slug": "stonetower-pizza"
+        // },
     ],
     docs: [
         {

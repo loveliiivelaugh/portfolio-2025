@@ -195,7 +195,7 @@ export function PlatformCarousel() {
 
     return (
         <Box sx={{ py: 4 }}>
-            <MarqueeWrapper ref={wrapperRef} sx={{ height: rowHeight }}>
+            <MarqueeWrapper ref={wrapperRef} sx={{ height: rowHeight, background: "rgba(0,0,0,0)" }}>
                 <Track
                     animate={cycleWidth ? { x: [0, -cycleWidth] } : undefined}
                     transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
