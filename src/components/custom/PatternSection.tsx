@@ -1,5 +1,5 @@
 // SectionPattern.tsx
-import { Box } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 
 type Variant = "none" | "dots" | "grid" | "checker";
 
@@ -12,15 +12,21 @@ export default function SectionPattern({
   variant?: Variant;
   opacity?: number;
 }) {
+  const theme = useTheme();
+  const ink =
+    theme.palette.mode === "light"
+      ? `rgba(18, 24, 28, ${opacity})`
+      : `rgba(255, 255, 255, ${opacity})`;
+
   const bg =
     variant === "dots"
-      ? `radial-gradient(rgba(255,255,255,${opacity}) 1px, transparent 1px)`
+      ? `radial-gradient(${ink} 1px, transparent 1px)`
       : variant === "grid"
-      ? `linear-gradient(rgba(255,255,255,${opacity}) 1px, transparent 1px),
-         linear-gradient(90deg, rgba(255,255,255,${opacity}) 1px, transparent 1px)`
+      ? `linear-gradient(${ink} 1px, transparent 1px),
+         linear-gradient(90deg, ${ink} 1px, transparent 1px)`
       : variant === "checker"
-      ? `linear-gradient(45deg, rgba(255,255,255,${opacity}) 1px, transparent 1px),
-         linear-gradient(-45deg, rgba(255,255,255,${opacity}) 1px, transparent 1px)`
+      ? `linear-gradient(45deg, ${ink} 1px, transparent 1px),
+         linear-gradient(-45deg, ${ink} 1px, transparent 1px)`
       : "none";
 
   const size =

@@ -68,9 +68,9 @@ function ProjectCard({
                 overflow: "hidden",
                 borderRadius: 3,
                 border: "1px solid",
-                borderColor: "rgba(255,255,255,0.08)",
+                borderColor: "rgba(16, 24, 32, 0.12)",
                 bgcolor: "background.paper",
-                boxShadow: "0 10px 30px rgba(0,0,0,.35)",
+                boxShadow: "0 12px 24px rgba(18, 22, 25, 0.12)",
                 ":focus-within": { outline: "2px solid", outlineColor: "primary.main" },
             }}
         >
@@ -105,7 +105,7 @@ function ProjectCard({
                         sx={{
                             position: "absolute",
                             inset: 0,
-                            background: "linear-gradient(to top, rgba(0,0,0,.35), rgba(0,0,0,.05))",
+                            background: "linear-gradient(to top, rgba(11, 16, 20, 0.35), rgba(11, 16, 20, 0.05))",
                         }}
                     />
                     {/* Dim layer (hidden until hover) */}
@@ -114,7 +114,7 @@ function ProjectCard({
                         sx={{
                             position: "absolute",
                             inset: 0,
-                            backgroundColor: "rgba(0,0,0,0.45)",
+                            backgroundColor: "rgba(12, 17, 22, 0.45)",
                             opacity: 0,
                             transition: "opacity .25s ease",
                         }}
@@ -143,9 +143,9 @@ function ProjectCard({
                             {tags.map(t => (
                                 <Chip key={t} label={t} size="small"
                                     sx={{
-                                        bgcolor: "rgba(15,163,177,.14)",
-                                        color: "#9be3ea",
-                                        border: "1px solid rgba(15,163,177,.28)",
+                                        bgcolor: "rgba(11,93,91,0.12)",
+                                        color: "#d6f1ef",
+                                        border: "1px solid rgba(11,93,91,0.28)",
                                     }}
                                 />
                             ))}
