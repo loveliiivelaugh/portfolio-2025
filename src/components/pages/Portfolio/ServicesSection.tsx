@@ -1,4 +1,4 @@
-import { Box, Typography, Chip, Button, Grid2 as Grid, useTheme } from "@mui/material";
+import { Box, Typography, Chip, Button, Grid2 as Grid } from "@mui/material";
 import { motion } from "framer-motion";
 // import { SiWordpress, SiDatabricks, SiServerfault, SiE } from "react-icons/si";
 // import { MdWeb, MdStorage, MdAppSettingsAlt } from "react-icons/md";
@@ -11,53 +11,37 @@ import {
   FaDatabase, FaRobot, FaServer, FaTools, FaCogs,
 } from "react-icons/fa";
 import {
-  SiWordpress, SiDatabricks, SiServerfault, SiSupabase, SiOpenai, SiDocker, SiGooglecloud,
+  SiDatabricks, SiSupabase, SiOpenai, SiDocker, SiGooglecloud,
   SiGraphql, SiTypescript, SiNextdotjs, SiNotion, SiGithub, SiSlack,
 } from "react-icons/si";
 
 // const MotionButton = motion(Button as any);
 
 const services = [
-  // 🔧 Core Development
-  { label: "Application Development", icon: <MdAppSettingsAlt /> },
-  { label: "Full Stack Web Development", icon: <MdWeb /> },
-  { label: "API Development", icon: <MdApi /> },
-  { label: "Database Management", icon: <FaDatabase /> },
-
-  // 🧠 AI + Automation
-  { label: "AI-Powered Automation", icon: <MdOutlineAnimation /> },
-  { label: "Local LLM Infrastructure", icon: <SiOpenai /> },
-  { label: "Agentic System Design", icon: <FaRobot /> },
-  { label: "Memory & Vector DBs", icon: <SiDatabricks /> },
-
-  // 🧰 Tools + Integrations
-  { label: "Supabase Architecture", icon: <SiSupabase /> },
-  { label: "Notion Automation", icon: <SiNotion /> },
-  { label: "Slack Bots & Workflows", icon: <SiSlack /> },
-  { label: "GitHub Actions / DevOps", icon: <SiGithub /> },
-  { label: "Dockerized Services", icon: <SiDocker /> },
-
-  // 🗂️ CMS / Web
-  { label: "Custom WordPress Solutions", icon: <SiWordpress /> },
-  { label: "CMS + Content Systems", icon: <SiDatabricks /> },
-  { label: "Hosting & Deployment", icon: <SiServerfault /> },
-  { label: "Cloud Services", icon: <SiGooglecloud /> },
-
-  // 🧩 Frameworks / Tools
-  { label: "Next.js / React", icon: <SiNextdotjs /> },
+  { label: "Product Engineering", icon: <MdAppSettingsAlt /> },
+  { label: "Automation Orchestration", icon: <MdOutlineAnimation /> },
+  { label: "API & Service Design", icon: <MdApi /> },
+  { label: "Data Architecture", icon: <FaDatabase /> },
+  { label: "Agentic Systems", icon: <FaRobot /> },
+  { label: "Local-First Platforms", icon: <FaServer /> },
+  { label: "Infrastructure-as-Code", icon: <FaCogs /> },
+  { label: "Supabase Systems", icon: <SiSupabase /> },
+  { label: "Workflow Bots", icon: <SiSlack /> },
+  { label: "DevOps Automation", icon: <SiGithub /> },
+  { label: "Containerized Services", icon: <SiDocker /> },
+  { label: "TypeScript Systems", icon: <SiTypescript /> },
   { label: "GraphQL / REST", icon: <SiGraphql /> },
-  { label: "TypeScript Engineering", icon: <SiTypescript /> },
-
-  // 🔒 Infrastructure
-  { label: "Local-First Architecture", icon: <FaServer /> },
-  { label: "Automation Pipelines", icon: <FaCogs /> },
-  { label: "Self-Hosted Systems", icon: <FaTools /> },
+  { label: "LLM Tooling", icon: <SiOpenai /> },
+  { label: "Knowledge Ops", icon: <SiNotion /> },
+  { label: "Cloud & Edge", icon: <SiGooglecloud /> },
+  { label: "Next.js / React", icon: <SiNextdotjs /> },
+  { label: "Systems Reliability", icon: <FaTools /> },
+  { label: "Content Infrastructure", icon: <SiDatabricks /> },
+  { label: "Web Platforms", icon: <MdWeb /> },
 ];
 
 
 export default function ServicesSection() {
-  const theme = useTheme();
-
   return (
     <Box component="section" py={6}>
       <motion.div
@@ -67,7 +51,7 @@ export default function ServicesSection() {
         viewport={{ once: true }}
       >
         <Typography variant="h4" fontWeight={600} gutterBottom>
-          Services
+          Capabilities
         </Typography>
 
         <Box
@@ -87,9 +71,10 @@ export default function ServicesSection() {
                 py: 1,
                 fontSize: "0.875rem",
                 fontWeight: 500,
-                bgcolor: theme.palette.grey[900],
-                color: theme.palette.common.white,
+                bgcolor: "rgba(11, 93, 91, 0.08)",
+                color: "text.primary",
                 borderRadius: "999px",
+                border: "1px solid rgba(11, 93, 91, 0.18)",
                 "& svg": { fontSize: "1rem" }
               }}
             />
@@ -106,7 +91,7 @@ export default function ServicesSection() {
         style={{ paddingTop: "48px 0 24px" }}
       >
         <Typography variant="h4" fontWeight={600} gutterBottom>
-          Let’s Build Something
+          Build With Me
         </Typography>
 
         <Grid container spacing={3} alignItems="center" mt={2}>
@@ -174,9 +159,9 @@ export default function ServicesSection() {
 
         <Box mt={4} sx={{ display: "flex", justifyContent: "space-between" }}>
           <SocialBar />
-          <Typography variant="body1" color="textSecondary" sx={{ mt: 1 }}>
-            Made with ❤️ by Michael Woodward © 2025
-          </Typography>
+            <Typography variant="body1" color="textSecondary" sx={{ mt: 1 }}>
+              Michael Woodward © 2025
+            </Typography>
         </Box>
       </motion.div>
     </Box>

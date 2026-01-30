@@ -31,9 +31,9 @@ export default function AmbientOrbs() {
           height: 520,
           left: "-8%",
           top: "-12%",
-          opacity: 0.12, // ~12%
+          opacity: 0.12,
           background:
-            "radial-gradient(closest-side, rgba(15,163,177,0.8), rgba(15,163,177,0.25), transparent 70%)",
+            "radial-gradient(closest-side, rgba(9,95,91,0.42), rgba(9,95,91,0.18), transparent 70%)",
           filter: "blur(2px)", // tiny blur only
         }}
       />
@@ -53,9 +53,9 @@ export default function AmbientOrbs() {
           height: 640,
           right: "-10%",
           top: "10%",
-          opacity: 0.10,
+          opacity: 0.09,
           background:
-            "radial-gradient(closest-side, rgba(99,102,241,0.7), rgba(99,102,241,0.2), transparent 70%)",
+            "radial-gradient(closest-side, rgba(191,120,64,0.35), rgba(191,120,64,0.16), transparent 70%)",
         }}
       />
 
@@ -72,7 +72,7 @@ export default function AmbientOrbs() {
           bottom: "-20%",
           opacity: 0.06,
           background:
-            "radial-gradient(closest-side, rgba(14,165,233,0.6), rgba(14,165,233,0.18), transparent 70%)",
+            "radial-gradient(closest-side, rgba(31,128,124,0.28), rgba(31,128,124,0.12), transparent 70%)",
         }}
       />
     </Box>

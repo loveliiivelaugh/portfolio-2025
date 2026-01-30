@@ -7,7 +7,6 @@ import {
     ListItemText, Stack, Typography, createTheme
 } from "@mui/material";
 // import { ThemeToggleButton } from "@theme/ThemeProvider";
-import useUtilityStore from "@store/utilityStore";
 import HeroSection, { PlatformCarousel } from "./Portfolio/HeroSection";
 import { ExperienceSection2 } from "./Portfolio/ExperienceSection2";
 import { cms } from "@config/../data/cms";
@@ -23,21 +22,33 @@ import { motion } from "framer-motion";
 // import CoreValues from "./Portfolio/CoreValues";
 // import ExperienceTimeline from "./Portfolio/ExperienceTimelineSection";
 import { useIsMobile } from "@lib/useIsMobile";
-import { DownloadIcon } from "@radix-ui/react-icons";
 import { Place } from "@mui/icons-material";
 import { ProjectGallery } from "@components/custom/ProjectGallery";
 import DateTimeLabel from "@components/custom/DateTimeLabel/DateTimeLabel";
 import FeaturedWriting, { PostItem } from "@components/custom/WritingSection";
 import MovingOrbs from "@components/custom/MovingOrbs";
 import SectionPattern from "@components/custom/PatternSection";
+import AutomationPulse from "@components/custom/AutomationPulse";
+import { Link as RouterLink } from "react-router-dom";
 
 import { alpha } from '@mui/material/styles';
 
 const theme = createTheme({
     palette: {
-        mode: "dark",
-        primary: { main: "#0FA3B1" }, // your accent (used on hover)
-        text: { primary: "#E6E9EE", secondary: "#AAB1BC" },
+        mode: "light",
+        primary: { main: "#0B5D5B" },
+        secondary: { main: "#7C4A2D" },
+        background: {
+            default: "#f6f2eb",
+            paper: "#fbf7f0",
+        },
+        text: { primary: "#1b2226", secondary: "#4a565c" },
+    },
+    typography: {
+        fontFamily: '"Sora", "Inter", sans-serif',
+        h1: { fontFamily: '"Cormorant Garamond", serif', fontWeight: 600, letterSpacing: "-0.02em" },
+        h2: { fontFamily: '"Cormorant Garamond", serif', fontWeight: 600, letterSpacing: "-0.02em" },
+        h3: { fontFamily: '"Cormorant Garamond", serif', fontWeight: 600 },
     },
     components: {
         MuiButton: {
@@ -46,48 +57,39 @@ const theme = createTheme({
                     textTransform: "none",
                     borderRadius: 999,
                 },
-
-                // SOLID pill — white by default, accent on hover
                 contained: ({ theme }) => ({
-                    backgroundColor: theme.palette.common.white,
-                    color: "#0E1116",
-                    boxShadow: "0 1px 0 rgba(0,0,0,.4), inset 0 0 0 1px rgba(0,0,0,.06)",
+                    backgroundColor: theme.palette.primary.main,
+                    color: "#f8f6f1",
+                    boxShadow: "0 12px 24px rgba(12, 24, 28, 0.12)",
                     "&:hover": {
-                        backgroundColor: theme.palette.common.white,
-                        color: theme.palette.primary.main,
-                        boxShadow: `inset 0 0 0 1px ${alpha(theme.palette.primary.main, 0.6)}`,
+                        backgroundColor: "#0f6f6a",
+                        boxShadow: "0 18px 40px rgba(12, 24, 28, 0.18)",
                     },
                 }),
-
-                // OUTLINED pill — white border/text; accent tint on hover
                 outlined: ({ theme }) => ({
-                    color: theme.palette.common.white,
-                    borderColor: alpha(theme.palette.common.white, 0.28),
+                    color: theme.palette.text.primary,
+                    borderColor: "rgba(13, 22, 26, 0.2)",
                     "&:hover": {
                         borderColor: theme.palette.primary.main,
                         color: theme.palette.primary.main,
-                        backgroundColor: alpha(theme.palette.primary.main, 0.10),
+                        backgroundColor: alpha(theme.palette.primary.main, 0.08),
                     },
                 }),
-
-                // TEXT button — white text; subtle accent tint on hover
                 text: ({ theme }) => ({
-                    color: theme.palette.common.white,
+                    color: theme.palette.text.primary,
                     "&:hover": {
-                        backgroundColor: alpha(theme.palette.primary.main, 0.10),
+                        backgroundColor: alpha(theme.palette.primary.main, 0.08),
                         color: theme.palette.primary.main,
                     },
                 }),
             },
         },
-
-        // Optional: make icon buttons match the same hover feel
         MuiIconButton: {
             styleOverrides: {
                 root: ({ theme }) => ({
-                    color: theme.palette.common.white,
+                    color: theme.palette.text.primary,
                     "&:hover": {
-                        backgroundColor: alpha(theme.palette.primary.main, 0.10),
+                        backgroundColor: alpha(theme.palette.primary.main, 0.08),
                         color: theme.palette.primary.main,
                     },
                 }),
@@ -118,7 +120,6 @@ const getData = (query: any, dataTarget: string, onSuccess: (data: any) => JSX.E
 const AnimatedType = motion(Typography as any);
 
 const Home = () => {
-    const { colorMode } = useUtilityStore();
     const { isHovering, setIsHovering } = useThemeStore();
     const isMobile = useIsMobile();
     // const navigate = useNavigate();
@@ -144,38 +145,44 @@ const Home = () => {
         // theme={createTheme({ palette: { mode: colorMode } })}
         >
             <CssBaseline />
-            <Container maxWidth={false}>
+            <Container maxWidth={false} sx={{ px: { xs: 2, md: 6 }, backgroundColor: "background.default" }}>
                 <MovingOrbs />
-                {/* Only use custom cursor on Desktop */}
                 {!isMobile && <CustomCursor active={isHovering} />}
-                <Box sx={{ position: "fixed", top: 20, right: 36, zIndex: 100 }}>
-                    <Button
-                        component="a"
-                        target="_blank"
-                        href="https://docs.google.com/document/d/1XRXuKHKSs5A1Kh2XkxHu-qxJpbrd527_ug9ycvp7u2o/edit?usp=sharing"
-                        color="inherit"
-                        variant="outlined"
-                        sx={{
-                            display: "flex", alignItems: "center", gap: 1,
-                            backdropFilter: "blur(10px)",
-                            borderRadius: "24px",
-                            border: "1px solid rgba(255,255,255,0.08)",
-                            boxShadow: "0 10px 30px rgba(0,0,0,.35)",
-                            "&:hover": {
-                                bgcolor: "rgba(255,255,255,0.02)",
-                                transform: "translateY(-2px)",
-                                boxShadow: "0 12px 40px rgba(0,0,0,.45)"
-                            }
-                        }}
-                    >Download Resume <DownloadIcon /></Button>
-                </Box>
-                <Box sx={{ position: "sticky", marginTop: "-72px", marginLeft: "12px" }}>
-                    {/* Chicago, IL, USA <Place /> */}
-                    <ListItemText
-                        primary={<>Chicago, IL USA <Place /></>}
-                        secondary={<span style={{ fontSize: "12px" }}><DateTimeLabel /> CST</span>}
-                        sx={{ color: "text.secondary" }}
-                    />
+
+                <Box
+                    sx={{
+                        position: "sticky",
+                        top: 0,
+                        zIndex: 40,
+                        backdropFilter: "blur(12px)",
+                        background: "rgba(246, 242, 235, 0.86)",
+                        borderBottom: "1px solid rgba(15, 22, 26, 0.08)",
+                    }}
+                >
+                    <Stack
+                        direction={{ xs: "column", md: "row" }}
+                        alignItems={{ xs: "flex-start", md: "center" }}
+                        justifyContent="space-between"
+                        spacing={2}
+                        sx={{ py: 2 }}
+                    >
+                        <Stack spacing={0.5}>
+                            <Typography variant="h6" fontWeight={600}>
+                                Woodward Studio
+                            </Typography>
+                            <ListItemText
+                                primary={<>Chicago, IL USA <Place /></>}
+                                secondary={<span style={{ fontSize: "12px" }}><DateTimeLabel /> CST</span>}
+                                sx={{ color: "text.secondary" }}
+                            />
+                        </Stack>
+                        <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5} alignItems={{ xs: "flex-start", sm: "center" }}>
+                            <Button component="a" href="#showcase" variant="text">Work</Button>
+                            <Button component="a" href="#systems" variant="text">Systems</Button>
+                            <Button component="a" href="#experience" variant="text">Experience</Button>
+                            <Button component={RouterLink} to="/resume" variant="contained">Interactive Resume</Button>
+                        </Stack>
+                    </Stack>
                 </Box>
                 <Grid
                     container
@@ -201,38 +208,45 @@ const Home = () => {
                         </SectionPattern>
                     </Grid>
 
+                    <Grid size={12} id="systems" py={2}>
+                        <SectionPattern variant="grid">
+                            <SlideIn>
+                                <AutomationPulse />
+                            </SlideIn>
+                        </SectionPattern>
+                    </Grid>
+
                     <Grid size={12}>
                         <PlatformCarousel />
                     </Grid>
 
-                    <Grid size={12} py={0}>
+                    <Grid size={12} id="showcase" py={0}>
                         <SectionPattern variant="grid">
                             <SlideIn>
-                                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 2 }}>
                                     <Box>
-                                        <Typography variant="h4" fontWeight={600}>Showcase</Typography>
-                                        <ListItemText secondary="Projects, Pipelines & OSS Systems" sx={{ pl: 1, mb: 4 }} />
+                                        <Typography variant="h4" fontWeight={600}>Selected Systems</Typography>
+                                        <ListItemText secondary="Automation cores, product platforms, and real-world tooling." sx={{ pl: 1, mb: 4 }} />
                                     </Box>
                                     <MotionButton
                                         variant="outlined"
-                                        // size="large"
                                         color="inherit"
-                                        whileHover={{ scale: 1.1 }}
+                                        whileHover={{ scale: 1.05 }}
                                         sx={{
                                             borderRadius: "24px",
-                                            border: "1px solid rgba(255,255,255,0.08)",
-                                            boxShadow: "0 10px 30px rgba(0,0,0,.35)",
+                                            border: "1px solid rgba(18, 22, 26, 0.16)",
+                                            boxShadow: "0 10px 30px rgba(18, 22, 25, 0.08)",
                                             "&:hover": {
-                                                bgcolor: "rgba(255,255,255,0.02)",
+                                                bgcolor: "rgba(11, 93, 91, 0.08)",
                                                 transform: "translateY(-2px)",
-                                                boxShadow: "0 12px 40px rgba(0,0,0,.45)"
+                                                boxShadow: "0 14px 40px rgba(18, 22, 25, 0.12)"
                                             }
                                         }}
                                         component="a"
                                         target="_blank"
                                         href="https://woodwardstudio.dev/post/roadmap"
                                     >
-                                        Read about my project roadmap
+                                        Roadmap Notes
                                     </MotionButton>
                                 </Box>
                                 {/* @ts-ignore */}
@@ -263,8 +277,8 @@ const Home = () => {
                         <SectionPattern variant="checker">
                             {/* <DocumentationSection /> */}
                             <SlideIn>
-                                <Typography variant="h4" fontWeight={600}>Documentation</Typography>
-                                <ListItemText secondary="Proven, enterprise-grade documentation workflows built into every project I ship." sx={{ pl: 1, mb: 4 }} />
+                                <Typography variant="h4" fontWeight={600}>Documentation Systems</Typography>
+                                <ListItemText secondary="Contracts, runbooks, and living docs embedded into every delivery." sx={{ pl: 1, mb: 4 }} />
                                 <Grid container>
                                     {getData(appConfigQuery, "cms.docs", (data: any) => data.map((document: {
                                         name: string;
@@ -286,8 +300,8 @@ const Home = () => {
                                                         primary={
                                                             <AnimatedType
                                                                 variant="h5"
-                                                                sx={{ color: (colorMode === "light") ? "#333" : "#fff", fontWeight: 300 }}
-                                                                whileHover={{ scale: 1.1 }}
+                                                                sx={{ color: "text.primary", fontWeight: 400 }}
+                                                                whileHover={{ scale: 1.05 }}
                                                             >
                                                                 {document.name}
                                                             </AnimatedType>
@@ -304,10 +318,10 @@ const Home = () => {
                     </Grid>
 
                     {/* Experience */}
-                    <Grid size={12} py={4}>
+                    <Grid size={12} py={4} id="experience">
                         <SectionPattern variant="grid">
                             <SlideIn>
-                                <Typography variant="h4" fontWeight={600} gutterBottom>Experience</Typography>
+                                <Typography variant="h4" fontWeight={600} gutterBottom>Execution History</Typography>
                                 <ExperienceSection2 />
                             </SlideIn>
                         </SectionPattern>
@@ -327,7 +341,7 @@ const Home = () => {
                             <Container>
                                 <SlideIn>
                                     {/* <Typography variant="h4" fontWeight={600} gutterBottom>Writing</Typography> */}
-                                    <FeaturedWriting posts={cms.posts as PostItem[]} />
+                                    <FeaturedWriting posts={cms.posts as PostItem[]} heading="Field Notes" />
                                 </SlideIn>
                             </Container>
                         </SectionPattern>

@@ -10,6 +10,7 @@ import SocialBar from "@components/custom/SocialBar/SocialBar";
 import headshotCropped from "@assets/headshot-cropped.png";
 import { motion } from "framer-motion";
 import { Button } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 
 const MotionButton = motion(Button as any);
 
@@ -224,13 +225,13 @@ export default function HeroSection() {
             </Grid> */}
             <Grid size={{ xs: 12, md: 8 }} order={2}>
                 <SlideIn>
-                    <Typography variant="h5" color="text.secondary" fontWeight={100}>
+                    <Typography variant="h5" color="text.secondary" fontWeight={400}>
                         Michael Woodward
                     </Typography>
 
                     <Box display="flex" alignItems="center" gap={2}>
-                        <Typography variant="h6" fontWeight={500}>
-                            Full-Stack JavaScript Developer
+                        <Typography variant="h6" fontWeight={600}>
+                            Systems Engineering · Automation · Product Platforms
                         </Typography>
                         {/* <Chip
                             label={<i>est. 2019</i>}
@@ -271,16 +272,12 @@ export default function HeroSection() {
                     </Typography> */}
                     <Typography
                         variant="subtitle1"
-                        // fontStyle="italic"
-                        // mt={2}
-                        // px={2}
                         color="text.secondary"
-                    // textAlign="center"
                     >
-                        I build for the web, local-first infrastructure, and powerful developer tooling for teams building the future.
+                        I design resilient systems that ship product faster: orchestration, infrastructure, and automation with a calm, deliberate UX.
                     </Typography>
 
-                    <Stack direction="row" spacing={2} mt={2}>
+                    <Stack direction={{ xs: "column", sm: "row" }} spacing={2} mt={3}>
                         <MotionButton
                             variant="outlined"
                             size="large"
@@ -301,6 +298,16 @@ export default function HeroSection() {
                             href="https://woodwardstudio.dev/consulting"
                         >
                             Work with me
+                        </MotionButton>
+                        <MotionButton
+                            variant="contained"
+                            size="large"
+                            whileHover={{ scale: 1.05 }}
+                            sx={{ borderRadius: "24px" }}
+                            component={RouterLink}
+                            to="/resume"
+                        >
+                            Interactive Resume
                         </MotionButton>
                         <MotionButton
                             variant="outlined"

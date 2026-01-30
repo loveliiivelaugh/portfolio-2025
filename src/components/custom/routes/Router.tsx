@@ -1,6 +1,7 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import HomePage from "@components/pages/Home";
 import SingleProjectPage from "@components/pages/SingleProjectPage";
+import Resume from "@components/pages/Resume";
 // import PortfolioPage from "@components/pages/Portfolio";
 // import AppLauncherPage from "@components/pages/AppLauncherPage";
 // import { BooksOverviewPage } from "@components/pages/BooksOverviewPage";
@@ -22,6 +23,10 @@ function AppRouter() {
         {
             path: "/project/:slug",
             element: (<SingleProjectPage />)
+        },
+        {
+            path: "/resume",
+            element: (<Resume />)
         },
         // {
         //     path: "/accounting",

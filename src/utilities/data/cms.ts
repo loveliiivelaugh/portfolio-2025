@@ -59,7 +59,7 @@ export const cms = {
         {
             name: "Guardian OSS",
             slug: "guardian-oss",
-            description: "An open-source, modular AI automation backend built with Bun, Hono, Supabase, and Qdrant. Designed for memory, inference routing, and task orchestration.",
+            description: "An open-source automation core for memory, inference routing, and task orchestration. Built to prove fast iteration without sacrificing system integrity.",
             tech: ["Bun", "Hono", "Supabase", "Qdrant", "Ollama", "Zod", "TypeScript"],
             thumb: guardianOssThumb,
             // live: "https://github.com/loveliiivelaugh/guardian-oss",
@@ -70,7 +70,7 @@ export const cms = {
         {
             name: "Engineering Blog",
             slug: "michael-woodward-blog",
-            description: "My blog for sharing engineering knowledge and experiences.",
+            description: "A systems journal: architecture notes, build logs, and applied automation playbooks.",
             tech: ["React", "TypeScript", "MUI", "Netlify", "Wordpress"],
             thumb: blogThumb,
             live: "https://woodwardstudio.dev",
@@ -82,7 +82,7 @@ export const cms = {
         // These will save businesses money and/or make them more money
         {
             "name": "BloggerAI",
-            "description": "AI and personal context driven automated blog content for WordPress.",
+            "description": "Automation pipeline for context-aware content orchestration and editorial workflows.",
             // "github": "",
             "live": "https://bloggerai.woodwardstudio.dev",
             "thumb": bloggeraiThumb,
@@ -93,12 +93,9 @@ export const cms = {
         {
             "name": "BookMe",
             "description": `
-                A full-featured booking/appointment scheduling SaaS platform 
-                designed for small businesses, instructors, dentists, and service providers. 
-                It includes dynamic availability management, automated reminders, 
-                recurring billing with Stripe integration, and a polished user onboarding 
-                flow — all built with a scalable, component-driven frontend architecture.
-                Competitor to Calendly, but with a focus on small businesses and service providers.`,
+                A scheduling platform focused on availability orchestration, automated reminders,
+                and reliable billing flows. Built for teams that need predictable operations
+                and controllable infrastructure.`,
             // "github": "",
             "live": "https://booking.woodwardstudio.dev",
             "thumb": bookmeThumb,
@@ -107,7 +104,7 @@ export const cms = {
         },
         {
             "name": "Openfitness",
-            "description": "A nutrition and fitness tracking application. Competition to MyFitnessPal.",
+            "description": "A health data platform with observability-minded APIs and scalable ingestion pipelines.",
             // "github": "",
             "live": "https://openfitness-api.woodwardstudio.dev/ui2",
             "thumb": openfitnessThumb,
@@ -117,7 +114,7 @@ export const cms = {
         },
         {
             "name": "Memory.me",
-            "description": "",
+            "description": "A personal knowledge graph with vector search, recall tooling, and agent-ready APIs.",
             // "github": "",
             "live": "https://memory.woodwardwebdev.com",
             "thumb": memorymeThumb,
@@ -176,31 +173,31 @@ export const cms = {
     ],
     posts: [
         {
-            title: "👋 Hi, I'm Michael Woodward — Welcome to My Engineering Lab",
+            title: "System Design Notes: Building a Modern Engineering Lab",
             date: "5/31/2025",
             readTime: 1,
             link: "https://woodwardstudio.dev/post/hi-im-michael-woodward-welcome-to-my-engineering-lab"
         },
         {
-            title: "🛣️ My Learning Journey into Software Engineering (and How You Can Follow It Too)",
+            title: "Operational Playbook: Building Capability Roadmaps",
             date: "6/4/2025",
             readTime: 5,
             link: "https://woodwardstudio.dev/post/my-learning-journey-into-software-engineering-and-how-you-can-follow-it-too"
         },
         {
-            title: "📊 Why I Built My Own Analytics + Observability Stack (for $10/month)",
+            title: "Observability on a Budget: $10/Month Stack",
             date: "6/4/2025",
             readTime: 4,
             link: "https://woodwardstudio.dev/post/why-i-built-my-own-analytics-observability-stack-for-10-month"
         },
         {
-            title: "⚡️Migrating Away From Zapier: Why Self-Hosted Automation",
+            title: "Leaving Zapier: Self-Hosted Automation Strategy",
             date: "6/23/2025",
             readTime: 3,
             link: "https://woodwardstudio.dev/post/away-from-zapier-why-self-hosted-automation-with-n8n-is-the-smarter-long-term-move"
         },
         {
-            title: "🧠 Beyond Automation: Unveiling the Strategic Value of Intelligent Systems",
+            title: "Intelligent Systems: Strategic Leverage in Product Ops",
             date: "9/15/2025",
             readTime: 2,
             link: "https://woodwardstudio.dev/post/beyond-automation-unveiling-the-strategic-value-of-intelligent-systems"
